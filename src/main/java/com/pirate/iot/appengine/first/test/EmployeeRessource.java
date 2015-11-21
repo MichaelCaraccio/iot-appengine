@@ -5,10 +5,18 @@ import javax.ws.rs.GET;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+/**
+ * TODO
+ * Exemple class, can be removed before release version !
+ */
 @Path("/hr/")
 public class EmployeeRessource {
 
-
+    /**
+     * @Access http://localhost:8080/rest/hr/employee/deruazvincent@gmail.com
+     * @param email
+     * @return
+     */
     @GET
     @Produces("application/json")
     @Path("/employee/{employeeEmail}/")

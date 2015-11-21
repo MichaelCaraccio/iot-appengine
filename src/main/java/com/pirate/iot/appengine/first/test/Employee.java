@@ -4,6 +4,10 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
+/**
+ * TODO
+ * Exemple class, can be removed before release version !
+ */
 @XmlRootElement(name = "employee")
 public class Employee {
     private String firstName;
