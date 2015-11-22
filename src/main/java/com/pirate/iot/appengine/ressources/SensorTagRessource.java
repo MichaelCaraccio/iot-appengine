@@ -3,10 +3,8 @@ package com.pirate.iot.appengine.ressources;
 import com.pirate.iot.appengine.entities.SensorTag;
 import com.pirate.iot.appengine.virtual.Virtualizer;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -71,14 +69,12 @@ public class SensorTagRessource {
      *
      * @return
      */
-    @GET
-    @Produces("application/json")
-    @Path("/test/")
-    public List getTest() {
+    @POST
+    @Consumes("application/json")
+    @Path("/")
+    public Response postSensorTag(SensorTag sensorTag) {
+        String result = "Record entered: "+ sensorTag;
 
-        Virtualizer virtualizer = new Virtualizer(WEB_INF_RAW_DATA_SENSORTAG_SET_2_JSON);
-        List list = virtualizer.build();
-
-        return list;
+        return Response.status(201).entity(result).build();
     }
 }

@@ -147,7 +147,7 @@ public class SensorTag {
     }
 
 
-    @XmlElement
+    @XmlElement(name = "guid")
     public String getGuid() {
         return guid;
     }
@@ -156,7 +156,7 @@ public class SensorTag {
         this.guid = guid;
     }
 
-    @XmlElement
+    @XmlElement(name = "isActive")
     public Boolean getActive() {
         return isActive;
     }
@@ -165,7 +165,7 @@ public class SensorTag {
         isActive = active;
     }
 
-    @XmlElement
+    @XmlElement(name = "pressure")
     public double getPressure() {
         return pressure;
     }
@@ -174,7 +174,7 @@ public class SensorTag {
         this.pressure = pressure;
     }
 
-    @XmlElement
+    @XmlElement(name = "pressure_t")
     public double getPressure_t() {
         return pressure_t;
     }
@@ -183,7 +183,7 @@ public class SensorTag {
         this.pressure_t = pressure_t;
     }
 
-    @XmlElement
+    @XmlElement(name = "humidity")
     public double getHumidity() {
         return humidity;
     }
@@ -192,7 +192,7 @@ public class SensorTag {
         this.humidity = humidity;
     }
 
-    @XmlElement
+    @XmlElement(name = "humidity_t")
     public double getHumidity_t() {
         return humidity_t;
     }
@@ -201,7 +201,7 @@ public class SensorTag {
         this.humidity_t = humidity_t;
     }
 
-    @XmlElement
+    @XmlElement(name = "objtemp")
     public double getObjtemp() {
         return objtemp;
     }
@@ -210,7 +210,7 @@ public class SensorTag {
         this.objtemp = objtemp;
     }
 
-    @XmlElement
+    @XmlElement(name = "accelX")
     public double getAccelX() {
         return accelX;
     }
@@ -219,7 +219,7 @@ public class SensorTag {
         this.accelX = accelX;
     }
 
-    @XmlElement
+    @XmlElement(name = "accelY")
     public double getAccelY() {
         return accelY;
     }
@@ -228,7 +228,7 @@ public class SensorTag {
         this.accelY = accelY;
     }
 
-    @XmlElement
+    @XmlElement(name = "accelZ")
     public double getAccelZ() {
         return accelZ;
     }
@@ -237,7 +237,7 @@ public class SensorTag {
         this.accelZ = accelZ;
     }
 
-    @XmlElement
+    @XmlElement(name = "gyroX")
     public double getGyroX() {
         return gyroX;
     }
@@ -246,7 +246,7 @@ public class SensorTag {
         this.gyroX = gyroX;
     }
 
-    @XmlElement
+    @XmlElement(name = "gyroY")
     public double getGyroY() {
         return gyroY;
     }
@@ -255,7 +255,7 @@ public class SensorTag {
         this.gyroY = gyroY;
     }
 
-    @XmlElement
+    @XmlElement(name = "gyroZ")
     public double getGyroZ() {
         return gyroZ;
     }
@@ -264,7 +264,7 @@ public class SensorTag {
         this.gyroZ = gyroZ;
     }
 
-    @XmlElement
+    @XmlElement(name = "magX")
     public double getMagX() {
         return magX;
     }
@@ -273,7 +273,7 @@ public class SensorTag {
         this.magX = magX;
     }
 
-    @XmlElement
+    @XmlElement(name = "magY")
     public double getMagY() {
         return magY;
     }
@@ -282,7 +282,7 @@ public class SensorTag {
         this.magY = magY;
     }
 
-    @XmlElement
+    @XmlElement(name = "magZ")
     public double getMagZ() {
         return magZ;
     }
@@ -291,7 +291,7 @@ public class SensorTag {
         this.magZ = magZ;
     }
 
-    @XmlElement
+    @XmlElement(name = "light")
     public double getLight() {
         return light;
     }
@@ -300,7 +300,7 @@ public class SensorTag {
         this.light = light;
     }
 
-    @XmlElement
+    @XmlElement(name = "battery")
     public double getBattery() {
         return battery;
     }
@@ -309,7 +309,7 @@ public class SensorTag {
         this.battery = battery;
     }
 
-    @XmlElement
+    @XmlElement(name = "key1")
     public int getKey1() {
         return key1;
     }
@@ -318,7 +318,7 @@ public class SensorTag {
         this.key1 = key1;
     }
 
-    @XmlElement
+    @XmlElement(name = "key2")
     public int getKey2() {
         return key2;
     }
@@ -327,7 +327,7 @@ public class SensorTag {
         this.key2 = key2;
     }
 
-    @XmlElement
+    @XmlElement(name = "reed")
     public int getReed() {
         return reed;
     }
@@ -336,7 +336,7 @@ public class SensorTag {
         this.reed = reed;
     }
 
-    @XmlElement
+    @XmlElement(name = "buzzer")
     public int getBuzzer() {
         return buzzer;
     }
@@ -345,7 +345,7 @@ public class SensorTag {
         this.buzzer = buzzer;
     }
 
-    @XmlElement
+    @XmlElement(name = "LED1")
     public int getLed1() {
         return led1;
     }
@@ -354,7 +354,7 @@ public class SensorTag {
         this.led1 = led1;
     }
 
-    @XmlElement
+    @XmlElement(name = "LED2")
     public int getLed2() {
         return led2;
     }
@@ -363,7 +363,7 @@ public class SensorTag {
         this.led2 = led2;
     }
 
-    @XmlElement
+    @XmlElement(name = "Radio")
     public String getRadio() {
         return radio;
     }
