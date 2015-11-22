@@ -374,32 +374,32 @@ public class SensorTag {
 
     @Override
     public String toString() {
-        return "SensorTag{" +
-                ", guid='" + guid + '\'' +
-                ", isActive=" + isActive +
-                ", pressure=" + pressure +
-                ", pressure_t=" + pressure_t +
-                ", humidity=" + humidity +
-                ", humidity_t=" + humidity_t +
-                ", objtemp=" + objtemp +
-                ", accelX=" + accelX +
-                ", accelY=" + accelY +
-                ", accelZ=" + accelZ +
-                ", gyroX=" + gyroX +
-                ", gyroY=" + gyroY +
-                ", gyroZ=" + gyroZ +
-                ", magX=" + magX +
-                ", magY=" + magY +
-                ", magZ=" + magZ +
-                ", light=" + light +
-                ", battery=" + battery +
-                ", key1=" + key1 +
-                ", key2=" + key2 +
-                ", reed=" + reed +
-                ", buzzer=" + buzzer +
-                ", led1=" + led1 +
-                ", led2=" + led2 +
-                ", radio='" + radio + '\'' +
-                '}';
+        return "{" +
+                "\n \"guid\":\"" + guid + "\"," +
+                "\n \"isActive\":" + isActive + "," +
+                "\n \"pressure\":" + pressure + "," +
+                "\n \"pressure_t\":" + pressure_t + "," +
+                "\n \"humidity\":" + humidity + "," +
+                "\n \"humidity_t\":" + humidity_t + "," +
+                "\n \"objtemp\":" + objtemp + "," +
+                "\n \"accelX\":" + accelX + "," +
+                "\n \"accelY\":" + accelY + "," +
+                "\n \"accelZ\":" + accelZ + "," +
+                "\n \"gyroX\":" + gyroX + "," +
+                "\n \"gyroY\":" + gyroY + "," +
+                "\n \"gyroZ\":" + gyroZ + "," +
+                "\n \"magX\":" + magX + "," +
+                "\n \"magY\":" + magY + "," +
+                "\n \"magZ\":" + magZ + "," +
+                "\n \"light\":" + light + "," +
+                "\n \"battery\":" + battery + "," +
+                "\n \"key1\":" + key1 + "," +
+                "\n \"key2\":" + key2 + "," +
+                "\n \"reed\":" + reed + "," +
+                "\n \"buzzer\":" + buzzer + "," +
+                "\n \"LED1\":" + led1 + "," +
+                "\n \"LED2\":" + led2 + "," +
+                "\n \"Radio\":\"" + radio + "\"" +
+                "\n}";
     }
 }
