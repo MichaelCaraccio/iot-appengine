@@ -72,7 +72,6 @@ public class Fetch {
     {
         ArrayList<Pi> pis = new ArrayList<>();
 
-        //TODO get list from datastore
         Query q = new Query("Pi");
         List<Entity> results = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
 
