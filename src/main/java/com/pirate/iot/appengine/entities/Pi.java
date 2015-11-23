@@ -28,6 +28,13 @@ public class Pi {
         this.friendlyName = friendlyName;
     }
 
+    public Pi(JSONObject data) {
+        this.externalURL = data.getString("externalURL");
+        this.uUID = data.getString("uUID");
+        this.friendlyName = data.getString("friendlyName");
+        this.registerDate = data.getString("registerDate");
+    }
+
     @XmlElement(name = "externalURL")
     public String getExternalURL() {
         return externalURL;
