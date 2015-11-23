@@ -3,7 +3,7 @@
 ### AppEngine ###
 # Google App Engine generated folder
 appengine-generated/
-
+.target/
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio

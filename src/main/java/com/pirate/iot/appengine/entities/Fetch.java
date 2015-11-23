@@ -1,30 +1,28 @@
-package com.pirate.iot.appengine.virtual;
+package com.pirate.iot.appengine.entities;
 
-import com.pirate.iot.appengine.entities.Pi;
-import com.pirate.iot.appengine.ressources.FetchRessource;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 
 /**
  * Created by kamyh on 23.11.15.
  */
-public class VirtualFetchRessource extends FetchRessource {
-
-    @Override
-    protected void fetchFrom(String piUrl) {
-        //TODO VIRTUALIZE THE RETURNED DATAS
-
-        String url = "http://localhost:8080/rest/sensortag/random/5";
-
+public class Fetch {
+    /**
+     * Retrieved all datas sensors from a specific PI
+     * @param piUrl
+     */
+    public void fetchFrom(String piUrl)
+    {
         try {
 
             Client client = Client.create();
 
             WebResource webResource = client
-                    .resource(url);
+                    .resource(piUrl + "/getdata");
 
             ClientResponse response = webResource.accept("application/json")
                     .get(ClientResponse.class);
@@ -48,10 +46,29 @@ public class VirtualFetchRessource extends FetchRessource {
         }
     }
 
-    @Override
-    protected ArrayList<Pi> getListPis()
+    /**
+     * parse all retrieved datas
+     * @param data <-- JSON Table []
+     */
+    protected void parse(String data)
     {
-        CreateRessourcesVirtual createRessourcesVirtual = new CreateRessourcesVirtual();
-        return createRessourcesVirtual.getPiList();
+        JSONArray sensortagList = new JSONArray(data);
+
+        for (int i=0;i< sensortagList.length(); i++)
+        {
+            SensorTag sensorTag = new SensorTag(sensortagList.getJSONObject(i));
+
+            System.out.println(sensorTag);
+            //TODO call sensorTag.toDatastore(DatastoreService datastore)
+        }
+    }
+
+    public ArrayList<Pi> getListPis()
+    {
+        ArrayList<Pi> pis = new ArrayList<>();
+
+        //TODO get list from datastore
+
+        return pis;
     }
 }

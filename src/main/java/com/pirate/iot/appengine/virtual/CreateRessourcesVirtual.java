@@ -20,6 +20,7 @@ public class CreateRessourcesVirtual {
 
     public CreateRessourcesVirtual()
     {
+        this.piList = new ArrayList<Pi>();
         this.build();
 
         for (Pi pi:piList) {
