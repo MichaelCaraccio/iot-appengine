@@ -3,7 +3,10 @@
 ### AppEngine ###
 # Google App Engine generated folder
 appengine-generated/
-.target/
+.target/*
+*/target/*
+*/target/**
+/iot-appengine/target
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
