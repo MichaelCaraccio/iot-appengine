@@ -9,23 +9,18 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 /**
- * Created by kamyh on 23.11.15.
- * USE THIS WITH CAUTION
- * Create fake pi in datastore for testing purpose in virtual mode
+ *
  */
 public class CreateRessourcesVirtual {
 
     private ArrayList<Pi> piList;
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     public CreateRessourcesVirtual()
     {
         this.piList = new ArrayList<Pi>();
         this.build();
 
-        for (Pi pi:piList) {
-            pi.register(datastore);
-        }
+
     }
 
     private void build()

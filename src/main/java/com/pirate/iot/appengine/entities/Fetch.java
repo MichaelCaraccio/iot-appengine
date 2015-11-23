@@ -1,16 +1,21 @@
 package com.pirate.iot.appengine.entities;
 
+import com.google.appengine.api.datastore.*;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kamyh on 23.11.15.
  */
 public class Fetch {
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+
+
     /**
      * Retrieved all datas sensors from a specific PI
      * @param piUrl
@@ -68,6 +73,14 @@ public class Fetch {
         ArrayList<Pi> pis = new ArrayList<>();
 
         //TODO get list from datastore
+        Query q = new Query("Pi");
+        List<Entity> results = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
+
+        for(Entity entity: results)
+        {
+            Pi pi = new Pi((String)entity.getProperty("externalURL"), (String)entity.getProperty("uUID"), (String)entity.getProperty("friendlyName"), (String)entity.getProperty("registerDate"));
+            pis.add(pi);
+        }
 
         return pis;
     }

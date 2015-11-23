@@ -28,6 +28,13 @@ public class Pi {
         this.friendlyName = friendlyName;
     }
 
+    public Pi(String externalURL, String uUID, String friendlyName, String registerDate) {
+        this.externalURL = externalURL;
+        this.uUID = uUID;
+        this.friendlyName = friendlyName;
+        this.registerDate = registerDate;
+    }
+
     public Pi(JSONObject data) {
         this.externalURL = data.getString("externalURL");
         this.uUID = data.getString("uUID");
@@ -74,16 +81,16 @@ public class Pi {
     public void register(DatastoreService datastore)
     {
         //create entity type (kind) "Sensortag"
-        Entity sensorTag = new Entity("Pi");
+        Entity pi = new Entity("Pi",uUID);
 
         // assign properties to entity
-        sensorTag.setProperty("externalURL", externalURL);
-        sensorTag.setProperty("uUID", uUID);
-        sensorTag.setProperty("friendlyName", friendlyName);
-        sensorTag.setProperty("registerDate", registerDate);
+        pi.setProperty("externalURL", externalURL);
+        pi.setProperty("uUID", uUID);//TODO REMOVE
+        pi.setProperty("friendlyName", friendlyName);
+        pi.setProperty("registerDate", registerDate);
 
         // store entity in datastore
-        datastore.put(sensorTag);
+        datastore.put(pi);
     }
 
     @Override
