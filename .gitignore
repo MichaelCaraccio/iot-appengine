@@ -6,8 +6,8 @@ appengine-generated/
 target/
 target/*
 /target/*
-# */target/*
-# */target/**
+*/target/*
+*/target/**
 /iot-appengine/target/
 /iot-appengine/target/*
 
