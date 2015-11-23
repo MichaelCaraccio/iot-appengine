@@ -1,5 +1,6 @@
 package com.pirate.iot.appengine.entities;
 
+import com.google.appengine.api.datastore.*;
 import org.json.JSONObject;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -370,6 +371,42 @@ public class SensorTag {
 
     public void setRadio(String radio) {
         this.radio = radio;
+    }
+
+    public void toDatastore(DatastoreService datastore)
+    {
+        //create entity type (kind) "Sensortag"
+        Entity sensorTag = new Entity("Sensortag");
+
+        // assign properties to entity
+        sensorTag.setProperty("guid", guid);
+        sensorTag.setProperty("isActive", isActive);
+        sensorTag.setProperty("pressure", pressure);
+        sensorTag.setProperty("pressure_t", pressure_t);
+        sensorTag.setProperty("humidity", humidity);
+        sensorTag.setProperty("humidity_t", humidity_t);
+        sensorTag.setProperty("objtemp", objtemp);
+        sensorTag.setProperty("accelX", accelX);
+        sensorTag.setProperty("accelY", accelY);
+        sensorTag.setProperty("accelZ", accelZ);
+        sensorTag.setProperty("gyroX", gyroX);
+        sensorTag.setProperty("gyroY", gyroY);
+        sensorTag.setProperty("gyroZ", gyroZ);
+        sensorTag.setProperty("magX", magX);
+        sensorTag.setProperty("magY", magY);
+        sensorTag.setProperty("magZ", magZ);
+        sensorTag.setProperty("light", light);
+        sensorTag.setProperty("battery", battery);
+        sensorTag.setProperty("key1", key1);
+        sensorTag.setProperty("key2", key2);
+        sensorTag.setProperty("reed", reed);
+        sensorTag.setProperty("buzzer", buzzer);
+        sensorTag.setProperty("LED1", led1);
+        sensorTag.setProperty("LED2", led2);
+        sensorTag.setProperty("Radio", radio);
+
+        // store entity in datastore
+        datastore.put(sensorTag);
     }
 
     @Override
