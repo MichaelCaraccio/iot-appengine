@@ -14,8 +14,6 @@ app = Flask(__name__)
 
 @app.route('/getdata', methods=['GET'])
 def getData():
-
-    tools = Tools()
     list = tools.virtual_data_sensors()
 
     return list
@@ -32,10 +30,16 @@ if __name__ == '__main__':
 
     uuid = get_mac()
 
-    tools = Tools()
+    #For local deployement
+    if sys.argv[2] == '0':
+        port = '4242'
+    else:
+        port = sys.argv[2]
+
+    tools = Tools(sys.argv[1],sys.argv[2])
     tools.register_local(uuid)
 
     app.run(
         host="0.0.0.0",
-        port=int("4242")
+        port=int(port)
     )

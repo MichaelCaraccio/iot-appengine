@@ -31,7 +31,11 @@ public class FetchRessource {
     @GET
     @Path("/")
     public Response fetchAll() {
-        this.fetch = new VirtualFetch();
+        //TODO change if no virtual
+        //this.fetch = new VirtualFetch();
+        this.fetch = new Fetch();
+
+
 
         //get List PIs
         ArrayList<Pi> listPi = this.fetch.getListPis();
@@ -39,6 +43,7 @@ public class FetchRessource {
         for (Pi pi:listPi) {
             //call to get URI to retrieved sensors data
             this.fetch.fetchFrom(pi.getExternalURL());
+            System.out.println("FETCH " + pi.getExternalURL());
         }
 
         return Response.status(201).entity("SUCCESS").build();

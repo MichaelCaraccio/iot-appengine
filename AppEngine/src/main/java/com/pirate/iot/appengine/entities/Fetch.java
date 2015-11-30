@@ -30,6 +30,7 @@ public class Fetch {
             WebResource webResource = client
                     .resource(piUrl + "/getdata");
 
+
             ClientResponse response = webResource.accept("application/json")
                     .get(ClientResponse.class);
 
