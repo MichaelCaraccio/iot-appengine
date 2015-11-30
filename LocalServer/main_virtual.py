@@ -1,6 +1,8 @@
 from flask import Flask, jsonify
 from tools import Tools
 import sys
+from uuid import getnode as get_mac
+
 
 #Be sure you aren't using any aliases for urlib !!!
 import urllib3.request
@@ -28,7 +30,7 @@ def getSensorList():
 
 if __name__ == '__main__':
 
-    uuid = sys.argv[1]
+    uuid = get_mac()
 
     tools = Tools()
     tools.register_local(uuid)
