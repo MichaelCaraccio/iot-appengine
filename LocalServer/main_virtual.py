@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from tools import Tools
+import sys
 
 #Be sure you aren't using any aliases for urlib !!!
 import urllib3.request
@@ -11,15 +12,11 @@ app = Flask(__name__)
 
 @app.route('/getdata', methods=['GET'])
 def getData():
-    list = [
-        {'param': 'foo', 'val': 2},
-        {'param': 'bar', 'val': 10}
-    ]
 
     tools = Tools()
-    tools.virtual_data_sensors()
+    list = tools.virtual_data_sensors()
 
-    return jsonify(measures=list)
+    return list
 
 
 @app.route('/getsensorslist', methods=['GET'])
@@ -30,6 +27,11 @@ def getSensorList():
 
 
 if __name__ == '__main__':
+
+    uuid = sys.argv[1]
+
+    tools = Tools()
+    tools.register_local(uuid)
 
     app.run(
         host="0.0.0.0",

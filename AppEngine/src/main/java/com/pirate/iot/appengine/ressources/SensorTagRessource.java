@@ -6,6 +6,7 @@ import com.pirate.iot.appengine.virtual.Virtualizer;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -22,7 +23,7 @@ public class SensorTagRessource {
     @GET
     @Produces("application/json")
     @Path("/random/{number}/")
-    public List getSensor(@PathParam ("number") int number) {
+    public HashMap<String, List> getSensor(@PathParam ("number") int number) {
 
         Virtualizer virtualizer = new Virtualizer(WEB_INF_RAW_DATA_SENSORTAG_SET_2_JSON);
         List list = virtualizer.build();
@@ -31,6 +32,7 @@ public class SensorTagRessource {
         int index = 0;
 
         List subList = new ArrayList();
+        HashMap<String, List> result = new HashMap<String,List>();
 
         if(number <= list.size()) {
             while(subList.size() < number)
@@ -41,7 +43,9 @@ public class SensorTagRessource {
                 }
             }
 
-            return subList;
+            result.put("measures",subList);
+
+            return result;
         }
 
         return null;

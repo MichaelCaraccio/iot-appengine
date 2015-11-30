@@ -27,6 +27,8 @@ public class RegisterRessource {
     public Response postSensorTag(Pi pi) {
         String result = "Successfully Register";
 
+        System.out.println(pi);
+
         pi.register(datastore);
 
         return Response.status(201).entity(result).build();

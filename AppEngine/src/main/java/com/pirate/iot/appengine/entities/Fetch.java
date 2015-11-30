@@ -5,6 +5,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,8 @@ public class Fetch {
      */
     protected void parse(String data)
     {
-        JSONArray sensortagList = new JSONArray(data);
+        JSONObject obj = new JSONObject(data);
+        JSONArray sensortagList = obj.getJSONArray("measures");
 
         for (int i=0;i< sensortagList.length(); i++)
         {
