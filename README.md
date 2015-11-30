@@ -7,5 +7,5 @@ Data collection backend for Internet of Things on Google App Engine using Sensor
 
 # Flask Procedure
 
-  sudo apt-get install python python-pip
-  sudo pip install flask
+    sudo apt-get install python python-pip
+    sudo pip install flask
