@@ -1,2 +1,2 @@
 #!/bin/sh
-python ./main_virtual.py "http://localhost:8080" 1234
+python ./main_virtual.py "http://1.iot-pirate.appspot.com" 1234
