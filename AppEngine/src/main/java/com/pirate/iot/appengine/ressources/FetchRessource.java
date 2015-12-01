@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Path("/fetch/")
+@Path("/fetch")
 public class FetchRessource {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
@@ -29,7 +29,6 @@ public class FetchRessource {
      * @return
      */
     @GET
-    @Path("/")
     public Response fetchAll() {
         //TODO change if no virtual
         //this.fetch = new VirtualFetch();

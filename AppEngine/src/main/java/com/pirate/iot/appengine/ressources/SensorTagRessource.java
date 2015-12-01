@@ -75,7 +75,6 @@ public class SensorTagRessource {
      */
     @POST
     @Consumes("application/json")
-    @Path("/")
     public Response postSensorTag(SensorTag sensorTag) {
         String result = "Record entered: "+ sensorTag;
 

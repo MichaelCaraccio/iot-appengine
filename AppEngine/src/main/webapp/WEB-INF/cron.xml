@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
     <cron>
-        <url>/fetch/</url>
-        <description>Repopulate the cache every 2 minutes</description>
-        <schedule>every 1 minutes</schedule>
+        <url>/rest/fetch/</url>
+        <description>Fetch every 10 minutes data from all registered LocalServers</description>
+        <schedule>every 10 minutes</schedule>
     </cron>
 </cronentries>

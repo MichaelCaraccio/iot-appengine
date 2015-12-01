@@ -23,7 +23,6 @@ public class RegisterRessource {
      */
     @POST
     @Consumes("application/json")
-    @Path("/")
     public Response postSensorTag(Pi pi) {
         String result = "Successfully Register";
 
