@@ -1,19 +1,26 @@
 import requests
 import json
 import urllib3, re
+import ConfigParser
+
 
 class Tools:
-    def __init__(self,ip_server,local_port):
-        self.ip_server = ip_server
-        self.local_port = local_port
+    def __init__(self):
+        self.config = ConfigParser.ConfigParser()
+        #TODO Check if config.cfg exist
+        self.config.readfp(open('config.cfg'))
 
-        if(local_port == '0'):
-            #for local testing
-            self.ip_local = "http://localhost:4242"
-        else:
+        self.ip_server = config.get("general", "distant_ip")
+        self.local_port = config.get("general", "port")
+        self.is_auto_ext = config.get("general", "external")
+
+        if self.is_auto_ext:
             self.ip_local = "http://" + self.get_external_ip() + ':' + self.local_port
+        else:
+            self.ip_local = config.get("general", "external") + ':' + self.local_port
 
         print("Local IP: " + self.ip_local)
+        print("Server IP: " + self.ip_server)
 
     def get_external_ip(self):
         site = requests.get("http://myip.dnsdynamic.org/")

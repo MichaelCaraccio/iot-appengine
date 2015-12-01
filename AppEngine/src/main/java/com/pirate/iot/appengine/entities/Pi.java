@@ -6,6 +6,9 @@ import org.json.JSONObject;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -39,7 +42,7 @@ public class Pi {
         this.externalURL = data.getString("externalURL");
         this.uUID = data.getString("uUID");
         this.friendlyName = data.getString("friendlyName");
-        this.registerDate = data.getString("registerDate");
+        this.registerDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS").format(new Date());
     }
 
     @XmlElement(name = "externalURL")
@@ -85,9 +88,9 @@ public class Pi {
 
         // assign properties to entity
         pi.setProperty("externalURL", externalURL);
-        pi.setProperty("uUID", uUID);//TODO REMOVE
+        pi.setProperty("uUID", uUID);
         pi.setProperty("friendlyName", friendlyName);
-        pi.setProperty("registerDate", registerDate);
+        pi.setProperty("registerDate", new SimpleDateFormat("yyyy-MM-dd HH:mm:S").format(new Date()));
 
         // store entity in datastore
         datastore.put(pi);

@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -404,6 +406,7 @@ public class SensorTag {
         sensorTag.setProperty("LED1", led1);
         sensorTag.setProperty("LED2", led2);
         sensorTag.setProperty("Radio", radio);
+        sensorTag.setProperty("date", new SimpleDateFormat("yyyy-MM-dd HH:mm:S").format(new Date()));
 
         // store entity in datastore
         datastore.put(sensorTag);
