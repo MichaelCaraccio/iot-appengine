@@ -6,7 +6,6 @@ from uuid import getnode as get_mac
 app = Flask(__name__)
 
 ## ROUTES ##
-
 @app.route('/getdata', methods=['GET'])
 def getData():
     list = tools.virtual_data_sensors()
@@ -20,7 +19,7 @@ def getSensorList():
     # TODO get list from z1
     return 'GetSensorsList called <-- UNIMPLEMENTED'
 
-
+## MAIN
 if __name__ == '__main__':
 
     uuid = get_mac()

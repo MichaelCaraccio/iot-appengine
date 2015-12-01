@@ -3,7 +3,10 @@ import json
 import urllib3, re
 import ConfigParser
 
-
+#####                                 #####
+# Handle all configurations and setup env #
+#                                         #
+#####                                 #####
 class Tools:
     def __init__(self):
         self.config = ConfigParser.ConfigParser()
