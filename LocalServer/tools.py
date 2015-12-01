@@ -11,7 +11,7 @@ class Tools:
             #for local testing
             self.ip_local = "http://localhost:4242"
         else:
-            self.ip_local = self.get_external_ip() + ':' + self.local_port
+            self.ip_local = "http://" + self.get_external_ip() + ':' + self.local_port
 
         print("Local IP: " + self.ip_local)
 
