@@ -10,14 +10,14 @@ class Tools:
         #TODO Check if config.cfg exist
         self.config.readfp(open('config.cfg'))
 
-        self.ip_server = config.get("general", "distant_ip")
-        self.local_port = config.get("general", "port")
-        self.is_auto_ext = config.get("general", "external")
+        self.ip_server = self.config.get("general", "distant_ip")
+        self.local_port = self.config.get("general", "port")
+        self.is_auto_ext = self.config.get("general", "external")
 
         if self.is_auto_ext:
             self.ip_local = "http://" + self.get_external_ip() + ':' + self.local_port
         else:
-            self.ip_local = config.get("general", "external") + ':' + self.local_port
+            self.ip_local = self.config.get("general", "external") + ':' + self.local_port
 
         print("Local IP: " + self.ip_local)
         print("Server IP: " + self.ip_server)
