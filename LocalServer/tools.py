@@ -13,6 +13,7 @@ class Tools:
         self.ip_server = self.config.get("general", "distant_ip")
         self.local_port = self.config.get("general", "port")
         self.is_auto_ext = self.config.get("general", "external")
+        self.friendly_name = self.config.get("general", "friendly_name")
 
         if self.is_auto_ext:
             self.ip_local = "http://" + self.get_external_ip() + ':' + self.local_port
@@ -35,7 +36,7 @@ class Tools:
         payload = {
                  "externalURL":self.ip_local,
                  "uUID":uuid,
-                 "friendlyName":"Pirate"
+                 "friendlyName":self.friendly_name
                  }
         headers = {'content-type': 'application/json'}
 
