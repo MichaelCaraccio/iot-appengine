@@ -9,24 +9,25 @@ from sensor_tag import Sensor_tag
 #                                         #
 #####                                 #####
 class Tools:
-    def __init__(self, uuid):
+    def __init__(self, uuid,config_filename):
         self.uuid = uuid
         self.config = ConfigParser.ConfigParser()
         #TODO Check if config.cfg exist
-        self.config.readfp(open('config.cfg'))
+        self.config.readfp(open(config_filename))
 
         self.ip_server = self.config.get("general", "distant_ip")
         self.local_port = self.config.get("general", "port")
-        self.is_auto_ext = self.config.get("general", "external")
+        self.is_auto_ext = self.config.get("general", "auto_external")
         self.friendly_name = self.config.get("general", "friendly_name")
 
-        if self.is_auto_ext:
+        if self.is_auto_ext == 'true' or self.is_auto_ext == 'True':
             self.ip_local = "http://" + self.get_external_ip() + ':' + self.local_port
         else:
             self.ip_local = self.config.get("general", "external") + ':' + self.local_port
 
-        print("Local IP: " + self.ip_local)
-        print("Server IP: " + self.ip_server)
+        print("Is Auto External Addr: " + self.is_auto_ext)
+        print("Local Ip: " + self.ip_local)
+        print("Server Ip: " + self.ip_server)
 
         #TODO make a list
         #param 2 --> UUID of an animal

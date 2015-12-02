@@ -2,6 +2,8 @@ import random
 import json
 import datetime
 
+#TODO fix range for value --> not needed for non virtual env
+
 class Sensor_tag:
     def __init__(self,name,uuid,radio):
         self.name = name
@@ -10,22 +12,22 @@ class Sensor_tag:
         self.init_sensor()
 
     def init_sensor(self):
-        self.pressure = random.randrange(0, 101, 2)
-        self.pressure_t = random.randrange(0, 101, 2)
-        self.humidity = random.randrange(0, 101, 2)
-        self.humidity_t = random.randrange(0, 101, 2)
-        self.objtemp = random.randrange(0, 101, 2)
-        self.accel_x = random.randrange(0, 101, 2)
-        self.accel_y = random.randrange(0, 101, 2)
-        self.accel_z = random.randrange(0, 101, 2)
-        self.gyro_x = random.randrange(0, 101, 2)
-        self.gyro_y = random.randrange(0, 101, 2)
-        self.gyro_z = random.randrange(0, 101, 2)
-        self.mag_x = random.randrange(0, 101, 2)
-        self.mag_y = random.randrange(0, 101, 2)
-        self.mag_z = random.randrange(0, 101, 2)
-        self.light = random.randrange(0, 101, 2)
-        self.battery = random.randrange(0, 101, 2)
+        self.pressure = round(random.uniform(500,700), 6)
+        self.pressure_t = round(random.uniform(500,700), 6)
+        self.humidity = round(random.uniform(0,50), 6)
+        self.humidity_t = round(random.uniform(0,50), 6)
+        self.objtemp = round(random.uniform(0,100), 6)
+        self.accel_x = round(random.uniform(0,2), 6)
+        self.accel_y = round(random.uniform(0,2), 6)
+        self.accel_z = round(random.uniform(0,2), 6)
+        self.gyro_x = round(random.uniform(0,360), 6)
+        self.gyro_y = round(random.uniform(0,360), 6)
+        self.gyro_z = round(random.uniform(0,360), 6)
+        self.mag_x = round(random.uniform(0,200), 6)
+        self.mag_y = round(random.uniform(0,200), 6)
+        self.mag_z = round(random.uniform(0,200), 6)
+        self.light = round(random.uniform(0,700), 6)
+        self.battery = round(random.uniform(0,100), 6)
         self.key1 = 0
         self.key2 = 0
         self.reed = 0
@@ -39,55 +41,63 @@ class Sensor_tag:
     def get_is_activated(self):
         return 'true'
 
-    def new_value(self):
+    def new_value(self,divider):
         way = random.randint(0,1)
         if way == 0:
-            val = random.randint(0,5)
+            val = round(random.uniform(0, 5)/divider, 6)
         else:
-            val = -random.randint(0,5)
+            val = -round(random.uniform(0, 5)/divider, 6)
+        return val
+
+    def keep_in_bound(self,min,max,val):
+        if(val > max):
+            return max
+        if(val < min):
+            return min
+
         return val
 
     def incr_pressure(self):
-        self.pressure += self.new_value()
+        self.pressure += self.keep_in_bound(200,1200,self.new_value(1))
 
     def incr_pressure_t(self):
-        self.pressure_t += self.new_value()
+        self.pressure_t += self.keep_in_bound(200,1200,self.new_value(1))
 
     def incr_humidity(self):
-        self.humidity += self.new_value()
+        self.humidity += self.keep_in_bound(0,100,self.new_value(10))
 
     def incr_humidity_t(self):
-        self.humidity_t += self.new_value()
+        self.humidity_t += self.keep_in_bound(0,100,self.new_value(10))
 
     def incr_accel_x(self):
-        self.accel_x += self.new_value()
+        self.accel_x += self.keep_in_bound(0,10,self.new_value(100))
 
     def incr_accel_y(self):
-        self.accel_y += self.new_value()
+        self.accel_y += self.keep_in_bound(0,10,self.new_value(100))
 
     def incr_accel_z(self):
-        self.accel_z += self.new_value()
+        self.accel_z += self.keep_in_bound(0,10,self.new_value(100))
 
     def incr_gyro_x(self):
-        self.gyro_x += self.new_value()
+        self.gyro_x += self.keep_in_bound(0,360,self.new_value(1))
 
     def incr_gyro_y(self):
-        self.gyro_y += self.new_value()
+        self.gyro_y += self.keep_in_bound(0,360,self.new_value(1))
 
     def incr_gyro_z(self):
-        self.gyro_z += self.new_value()
+        self.gyro_z += self.keep_in_bound(0,360,self.new_value(1))
 
     def incr_mag_x(self):
-        self.mag_x += self.new_value()
+        self.mag_x += self.keep_in_bound(0,360,self.new_value(1))
 
     def incr_mag_y(self):
-        self.mag_y += self.new_value()
+        self.mag_y += self.keep_in_bound(0,360,self.new_value(1))
 
     def incr_mag_z(self):
-        self.mag_z += self.new_value()
+        self.mag_z += self.keep_in_bound(0,360,self.new_value(1))
 
     def incr_light(self):
-        self.light += self.new_value()
+        self.light += self.keep_in_bound(0,1200,self.new_value(1))
 
     def incr_all(self):
         self.incr_pressure()

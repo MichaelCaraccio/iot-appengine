@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from tools import Tools
 from uuid import getnode as get_mac
+import sys
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -24,7 +25,7 @@ if __name__ == '__main__':
 
     uuid = get_mac()
 
-    tools = Tools(uuid)
+    tools = Tools(uuid,sys.argv[1])
     tools.register_local()
 
     app.run(

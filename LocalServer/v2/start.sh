@@ -1,2 +1,2 @@
 #!/bin/sh
-python ./main_virtual.py
+python ./main_virtual.py config.cfg
