@@ -24,8 +24,8 @@ if __name__ == '__main__':
 
     uuid = get_mac()
 
-    tools = Tools()
-    tools.register_local(uuid)
+    tools = Tools(uuid)
+    tools.register_local()
 
     app.run(
         host="0.0.0.0",

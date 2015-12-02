@@ -9,7 +9,8 @@ from sensor_tag import Sensor_tag
 #                                         #
 #####                                 #####
 class Tools:
-    def __init__(self):
+    def __init__(self, uuid):
+        self.uuid = uuid
         self.config = ConfigParser.ConfigParser()
         #TODO Check if config.cfg exist
         self.config.readfp(open('config.cfg'))
@@ -39,8 +40,8 @@ class Tools:
         print(str)
         return str
 
-    def register_local(self, uuid):
-        self.uuid = uuid
+    def register_local(self):
+
         url = self.ip_server + '/rest/register/'
         payload = {
                  "externalURL":self.ip_local,
