@@ -7,7 +7,10 @@ import com.pirate.iot.appengine.virtual.CreateRessourcesVirtual;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Path("/charts/")
@@ -31,6 +34,20 @@ public class chartsRessource {
                         Query.FilterOperator.EQUAL,
                         uuid);
         q.setFilter(uuidFilter);
+
+        //Last 1 day
+        Calendar cal = Calendar.getInstance();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+
+        //TODO maybe use a parameter from URI
+        cal.add(Calendar.DATE, -1);
+
+        Query.Filter DateFilter =
+                new Query.FilterPredicate("date",
+                        Query.FilterOperator.GREATER_THAN_OR_EQUAL,
+                        dateFormat.format(cal.getTime()));
+        q.setFilter(DateFilter);
+
         List<Entity> results = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
 
         for(Entity entity: results)
