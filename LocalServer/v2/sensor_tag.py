@@ -42,9 +42,9 @@ class Sensor_tag:
     def new_value(self):
         way = random.randint(0,1)
         if way == 0:
-            val = random.randint(0,5,0.1)
+            val = random.randint(0,5)
         else:
-            val = -random.randint(0,5,0.1)
+            val = -random.randint(0,5)
         return val
 
     def incr_pressure(self):
