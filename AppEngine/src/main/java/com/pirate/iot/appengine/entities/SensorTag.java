@@ -62,6 +62,7 @@ public class SensorTag {
     private int led2;
     //Radio interface(BLE/Wifi) - string
     private String radio;
+    private String datetime;
 
     public SensorTag() {
 
@@ -149,6 +150,14 @@ public class SensorTag {
         this.radio = data.getString("Radio");
     }
 
+    @XmlElement(name = "datetime")
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
 
     @XmlElement(name = "guid")
     public String getGuid() {
