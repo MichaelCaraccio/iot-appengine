@@ -68,6 +68,7 @@ public class Fetch {
 
             System.out.println(sensorTag);
             //TODO call sensorTag.toDatastore(DatastoreService datastore)
+            sensorTag.toDatastore(datastore);
         }
     }
 

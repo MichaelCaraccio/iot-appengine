@@ -29,7 +29,8 @@ class Tools:
         print("Server IP: " + self.ip_server)
 
         #TODO make a list
-        self.sensor = Sensor_tag(self.friendly_name + '_1',self.uuid,'BLE')
+        #param 2 --> UUID of an animal
+        self.sensor = Sensor_tag(self.friendly_name + '_1','51fa8287-a719-4c1b-8177-7ec829f6e08e','BLE')
 
     def get_external_ip(self):
         site = requests.get("http://myip.dnsdynamic.org/")
