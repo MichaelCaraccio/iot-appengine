@@ -36,7 +36,8 @@ class Tools:
         return site.text
 
     def virtual_data_sensors(self):
-        str = self.sensor.get_json()
+        #str = self.sensor.get_json()
+        str = '*** '
         print(str)
         return str
 
