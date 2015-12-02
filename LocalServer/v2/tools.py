@@ -45,7 +45,7 @@ class Tools:
         url = self.ip_server + '/rest/register/'
         payload = {
                  "externalURL":self.ip_local,
-                 "uUID":uuid,
+                 "uUID":self.uuid,
                  "friendlyName":self.friendly_name
                  }
         headers = {'content-type': 'application/json'}
