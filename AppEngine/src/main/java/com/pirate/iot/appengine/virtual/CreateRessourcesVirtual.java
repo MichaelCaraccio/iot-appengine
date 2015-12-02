@@ -19,8 +19,6 @@ public class CreateRessourcesVirtual {
     {
         this.piList = new ArrayList<Pi>();
         this.build();
-
-
     }
 
     private void build()
