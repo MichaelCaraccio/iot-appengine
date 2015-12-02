@@ -27,7 +27,6 @@
 
 <script type="application/javascript">
 
-
     var chart = c3.generate({
         bindto: '#chart',
         data: {
