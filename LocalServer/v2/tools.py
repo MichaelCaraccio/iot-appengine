@@ -49,7 +49,7 @@ class Tools:
             # All captor type need to have a get_json() methode
             result["measures"].append(sensor.get_json())
 
-        return json.dump(result)
+        return json.dumps(result)
 
     def register_local(self):
 
