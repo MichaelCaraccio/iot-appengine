@@ -1,2 +1,2 @@
 #!/bin/sh
-python ./main.py config.cfg
+python3 ./main.py config.cfg
