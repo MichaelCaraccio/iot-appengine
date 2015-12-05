@@ -2,6 +2,7 @@ import random
 import json
 import datetime
 
+
 class Sensor_tag_virtual:
     ### Sensor interface ##
     ## attributs:
@@ -12,7 +13,7 @@ class Sensor_tag_virtual:
     ## methods
     # get_json() -> return a json with all measures
 
-    def __init__(self, name, uuid, radio,race,age):
+    def __init__(self, name, uuid, radio, race, age):
         self.name = name
         self.age = age
         self.race = race
