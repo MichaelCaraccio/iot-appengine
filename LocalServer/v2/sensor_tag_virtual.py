@@ -4,7 +4,7 @@ import datetime
 
 #TODO fix range for value --> not needed for non virtual env
 
-class Sensor_tag:
+class Sensor_tag_virtual:
     def __init__(self,name,uuid,radio):
         self.name = name
         self.uuid = uuid
