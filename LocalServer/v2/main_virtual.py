@@ -9,7 +9,7 @@ app = Flask(__name__)
 ## ROUTES ##
 @app.route('/getdata', methods=['GET'])
 def getData():
-    list = tools.virtual_data_sensors()
+    list = tools.get_data_sensors()
 
     return list
 
