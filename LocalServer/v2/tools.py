@@ -43,13 +43,10 @@ class Tools:
         return site.text
 
     def get_data_sensors(self):
-        # All captor type need to have a get_json() methode
-        str = self.Sensor_tag_virtual.get_json()
-        print(str)
-
         result = []
 
         for sensor in self.sensors:
+            # All captor type need to have a get_json() methode
             result = json.dumps(result,sensor.get_json())
 
         print(result)
