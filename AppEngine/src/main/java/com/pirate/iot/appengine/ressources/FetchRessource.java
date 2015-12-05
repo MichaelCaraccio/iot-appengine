@@ -34,8 +34,6 @@ public class FetchRessource {
         //this.fetch = new VirtualFetch();
         this.fetch = new Fetch();
 
-
-
         //get List PIs
         ArrayList<Pi> listPi = this.fetch.getListPis();
         //foreach PI

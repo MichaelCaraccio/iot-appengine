@@ -2,6 +2,8 @@ package com.pirate.iot.appengine.entities;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.repackaged.org.codehaus.jackson.annotate.JsonValue;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.xml.bind.annotation.XmlElement;
@@ -104,6 +106,16 @@ public class Pi {
 
         // store entity in datastore
         datastore.put(pi);
+
+        JSONObject jsonObj = new JSONObject(this.sensors);
+        JSONArray animalsJSON = jsonObj.getJSONArray("sensors");
+
+        for (int i = 0; i < animalsJSON.length(); i++) {
+            JSONObject animalJSON = animalsJSON.getJSONObject(i);
+
+            Animal animal = new Animal(animalJSON.getInt("race"),animalJSON.getString("uuid"),animalJSON.getString("name"),animalJSON.getString("age"));
+            animal.register(datastore);
+        }
     }
 
     @Override

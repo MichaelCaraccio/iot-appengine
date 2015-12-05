@@ -1,15 +1,18 @@
 package com.pirate.iot.appengine.ressources;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.*;
 import com.pirate.iot.appengine.entities.Animal;
 import com.pirate.iot.appengine.entities.Pi;
+import com.pirate.iot.appengine.entities.SensorTag;
 import com.pirate.iot.appengine.virtual.CreateRessourcesVirtual;
 import org.json.JSONArray;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,6 +23,18 @@ public class AnimalsRessource {
     @GET
     @Produces("application/json")
     public HashMap<String, List> fetchAll() {
+        List subList = new ArrayList();
+        HashMap<String, List> result = new HashMap<String,List>();
+
+        result.put("animals",this.getAnimals());
+
+        return result;
+    }
+
+    @GET
+    @Consumes("application/json")
+    @Path("/getfake")
+    public HashMap<String, List> getfake() {
         List subList = new ArrayList();
         HashMap<String, List> result = new HashMap<String,List>();
 
@@ -89,5 +104,32 @@ public class AnimalsRessource {
         }
 
         return animalsList;
+    }
+
+    private ArrayList<Animal> getAnimals() {
+        ArrayList<Animal> list = new ArrayList<Animal>();
+
+        //TODO Limit number of result
+        Query q = new Query("Animal");
+        /*Query.Filter uuidFilter =
+                new Query.FilterPredicate("guid",
+                        Query.FilterOperator.EQUAL,
+                        uuid);
+        q.setFilter(uuidFilter);*/
+
+        List<Entity> results = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
+
+        for(Entity entity: results)
+        {
+            Animal animal = new Animal(
+                    ((Long)entity.getProperty("race")).intValue(),
+                    (String)entity.getProperty("uuid"),
+                    (String)entity.getProperty("name"),
+                    (String)entity.getProperty("age")
+            );
+
+            list.add(animal);
+        }
+        return list;
     }
 }
