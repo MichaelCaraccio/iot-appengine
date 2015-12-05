@@ -10,7 +10,7 @@ app = Flask(__name__)
 @app.route('/getdata', methods=['GET'])
 def getData():
     list = tools.get_data_sensors()
-
+    print(list)
     return list
 
 

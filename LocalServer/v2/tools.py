@@ -50,8 +50,6 @@ class Tools:
             result["measures"].append(sensor.get_json())
             print("Sensor: " + str(sensor))  # TODO print uuid
 
-        print(result)
-
         return result
 
     def register_local(self):
