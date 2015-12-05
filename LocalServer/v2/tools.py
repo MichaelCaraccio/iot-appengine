@@ -38,31 +38,29 @@ class Tools:
         self.sensors.append(
             Sensor_tag_virtual(self.friendly_name + '_1', '51fa8287-a719-4c1b-8177-7ec829f6e08r', 'BLE'))
 
+    def get_external_ip(self):
+        site = requests.get("http://myip.dnsdynamic.org/")
+        return site.text
 
-def get_external_ip(self):
-    site = requests.get("http://myip.dnsdynamic.org/")
-    return site.text
+    def get_data_sensors(self):
+        result = {'measures': []}
 
+        for sensor in self.sensors:
+            # All captor type need to have a get_json() methode
+            result["measures"].append(sensor.get_json())
 
-def get_data_sensors(self):
-    result = {'measures': []}
+        return json.dump(result)
 
-    for sensor in self.sensors:
-        # All captor type need to have a get_json() methode
-        result["measures"].append(sensor.get_json())
+    def register_local(self):
 
-    return json.dump(result)
+        url = self.ip_server + '/rest/register/'
+        payload = {
+            "externalURL": self.ip_local,
+            "uUID": self.uuid,
+            "friendlyName": self.friendly_name
+        }
+        headers = {'content-type': 'application/json'}
 
+        response = requests.post(url, data=json.dumps(payload), headers=headers)
 
-def register_local(self):
-    url = self.ip_server + '/rest/register/'
-    payload = {
-        "externalURL": self.ip_local,
-        "uUID": self.uuid,
-        "friendlyName": self.friendly_name
-    }
-    headers = {'content-type': 'application/json'}
-
-    response = requests.post(url, data=json.dumps(payload), headers=headers)
-
-    print("Status Code: " + str(response.status_code))
+        print("Status Code: " + str(response.status_code))
