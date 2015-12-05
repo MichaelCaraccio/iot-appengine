@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from tools import Tools
 from uuid import getnode as get_mac
 import sys
+from sensor_tag_virtual import Sensor_tag_virtual
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -17,8 +18,9 @@ def getData():
 @app.route('/getsensorslist', methods=['GET'])
 def getSensorList():
 
-    # TODO get list from z1
-    return 'GetSensorsList called <-- UNIMPLEMENTED'
+    list = tools.sensor_list()
+    print(list)
+    return list
 
 ## MAIN
 if __name__ == '__main__':
@@ -26,6 +28,13 @@ if __name__ == '__main__':
     uuid = get_mac()
 
     tools = Tools(uuid,sys.argv[1])
+
+    # param 2 --> UUID of an animal
+    # sensor need to have a get_json() method
+    #sensor need attributs name and uuid
+    tools.add_sensor(Sensor_tag_virtual( 'virtual_1', '51fa8287-a719-4c1b-8177-7ec829f6e08e', 'BLE'))
+    tools.add_sensor(Sensor_tag_virtual( 'virtual_2', '51fa8287-a719-4c1b-8177-7ec829f6e08r', 'BLE'))
+
     tools.register_local()
 
     app.run(

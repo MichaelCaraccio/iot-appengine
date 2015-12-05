@@ -32,11 +32,8 @@ class Tools:
 
         self.sensors = []
 
-        # param 2 --> UUID of an animal
-        self.sensors.append(
-            Sensor_tag_virtual(self.friendly_name + '_1', '51fa8287-a719-4c1b-8177-7ec829f6e08e', 'BLE'))
-        self.sensors.append(
-            Sensor_tag_virtual(self.friendly_name + '_1', '51fa8287-a719-4c1b-8177-7ec829f6e08r', 'BLE'))
+    def add_sensor(self,sensor):
+        self.sensors.append(sensor)
 
     def get_external_ip(self):
         site = requests.get("http://myip.dnsdynamic.org/")
@@ -64,3 +61,11 @@ class Tools:
         response = requests.post(url, data=json.dumps(payload), headers=headers)
 
         print("Status Code: " + str(response.status_code))
+
+    def sensor_list(self):
+        result = {'sensors': []}
+
+        for sensor in self.sensors:
+            result["sensors"].append({"name":sensor.name,"uuid":sensor.uuid})
+
+        return json.dumps(result)
