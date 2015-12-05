@@ -32,6 +32,7 @@ class Tools:
 
         self.sensors = []
 
+    # Method to add a sensor
     def add_sensor(self,sensor):
         self.sensors.append(sensor)
 
@@ -39,6 +40,7 @@ class Tools:
         site = requests.get("http://myip.dnsdynamic.org/")
         return site.text
 
+    # Method to generate a JSON to send to the backend
     def get_data_sensors(self):
         result = {'measures': []}
 
@@ -49,12 +51,12 @@ class Tools:
         return json.dumps(result)
 
     def register_local(self):
-
         url = self.ip_server + '/rest/register/'
         payload = {
             "externalURL": self.ip_local,
             "uUID": self.uuid,
-            "friendlyName": self.friendly_name
+            "friendlyName": self.friendly_name,
+            "sensors": self.sensor_list()
         }
         headers = {'content-type': 'application/json'}
 
@@ -62,6 +64,7 @@ class Tools:
 
         print("Status Code: " + str(response.status_code))
 
+    # get all active sensor and parse it in a JSON
     def sensor_list(self):
         result = {'sensors': []}
 
