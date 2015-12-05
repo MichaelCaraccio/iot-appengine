@@ -34,25 +34,25 @@ class Tools:
 
         # param 2 --> UUID of an animal
         self.sensors.append(
-            Sensor_tag_virtual(self.friendly_name + '_1', '51fa8287-a719-4c1b-8177-7ec829f6e08e', 'BLE'));
+            Sensor_tag_virtual(self.friendly_name + '_1', '51fa8287-a719-4c1b-8177-7ec829f6e08e', 'BLE'))
         self.sensors.append(
-            Sensor_tag_virtual(self.friendly_name + '_1', '51fa8287-a719-4c1b-8177-7ec829f6e08r', 'BLE'));
+            Sensor_tag_virtual(self.friendly_name + '_1', '51fa8287-a719-4c1b-8177-7ec829f6e08r', 'BLE'))
 
     def get_external_ip(self):
         site = requests.get("http://myip.dnsdynamic.org/")
         return site.text
 
     def get_data_sensors(self):
-        result = []
+        result = {'measures': []}
 
         for sensor in self.sensors:
             # All captor type need to have a get_json() methode
-            result = json.dumps(result,sensor.get_json())
-            print("Sensor: " + str(sensor))
+            result["measures"].append(sensor.get_json())
+            print("Sensor: " + str(sensor))  # TODO print uuid
 
         print(result)
 
-        return json.dumps({'measures': [result]})
+        return result
 
     def register_local(self):
 
