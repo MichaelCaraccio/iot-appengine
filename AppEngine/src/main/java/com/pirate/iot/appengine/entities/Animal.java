@@ -15,7 +15,7 @@ import java.util.Date;
 @XmlRootElement(name = "animal")
 public class Animal {
 
-    private String race;
+    private int race;
     private String uUID;
     private String name;
     private String age;
@@ -24,13 +24,13 @@ public class Animal {
 
     }
 
-    public Animal(String race, String uUID, String name) {
+    public Animal(int race, String uUID, String name) {
         this.race = race;
         this.uUID = uUID;
         this.name = name;
     }
 
-    public Animal(String race, String uUID, String name, String age) {
+    public Animal(int race, String uUID, String name, String age) {
         this.race = race;
         this.uUID = uUID;
         this.name = name;
@@ -38,18 +38,18 @@ public class Animal {
     }
 
     public Animal(JSONObject data) {
-        this.race = data.getString("race");
+        this.race = data.getInt("race");
         this.uUID = data.getString("uUID");
         this.name = data.getString("name");
-        this.age = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS").format(new Date());
+        this.age = data.getString("age");
     }
 
     @XmlElement(name = "race")
-    public String getRace() {
+    public int getRace() {
         return race;
     }
 
-    public void setRace(String race) {
+    public void setRace(int race) {
         this.race = race;
     }
 
@@ -89,7 +89,7 @@ public class Animal {
         pi.setProperty("race", race);
         pi.setProperty("uUID", uUID);
         pi.setProperty("name", name);
-        pi.setProperty("age", "yyyy-MM-dd HH:mm:S");
+        pi.setProperty("age", age);
 
         // store entity in datastore
         datastore.put(pi);

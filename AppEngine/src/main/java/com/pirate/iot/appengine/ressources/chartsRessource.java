@@ -35,12 +35,12 @@ public class chartsRessource {
                         uuid);
         q.setFilter(uuidFilter);
 
-        //Last 1 day
+        //Last 5 days
         Calendar cal = Calendar.getInstance();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
 
         //TODO maybe use a parameter from URI
-        cal.add(Calendar.DATE, -1);
+        cal.add(Calendar.DATE, -5);
 
         Query.Filter DateFilter =
                 new Query.FilterPredicate("date",
