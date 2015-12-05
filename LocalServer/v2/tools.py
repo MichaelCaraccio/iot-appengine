@@ -48,7 +48,6 @@ class Tools:
         for sensor in self.sensors:
             # All captor type need to have a get_json() methode
             result["measures"].append(sensor.get_json())
-            print("Sensor: " + str(sensor))  # TODO print uuid
 
         return result
 
