@@ -72,6 +72,6 @@ class Tools:
         result = {'sensors': []}
 
         for sensor in self.sensors:
-            result["sensors"].append({"name":sensor.name,"uuid":sensor.uuid})
+            result["sensors"].append({"name":sensor.name,"uuid":sensor.uuid,"race":sensor.race,"age":sensor.age})
 
         return json.dumps(result)

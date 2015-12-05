@@ -20,6 +20,7 @@ public class Pi {
     private String uUID;
     private String friendlyName;
     private String registerDate;
+    private String sensors;
 
     public Pi() {
 
@@ -79,6 +80,15 @@ public class Pi {
 
     public void setRegisterDate(String registerDate) {
         this.registerDate = registerDate;
+    }
+
+    @XmlElement(name = "sensors")
+    public String getSensors() {
+        return sensors;
+    }
+
+    public void setSensors(String sensors) {
+        this.sensors = sensors;
     }
 
     public void register(DatastoreService datastore)

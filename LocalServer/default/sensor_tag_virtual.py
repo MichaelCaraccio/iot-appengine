@@ -3,8 +3,19 @@ import json
 import datetime
 
 class Sensor_tag_virtual:
-    def __init__(self, name, uuid, radio):
+    ### Sensor interface ##
+    ## attributs:
+    # name  -> String
+    # age   -> String -> "yyyy-MM-dd HH:mm:S"
+    # race  -> int -> 0 = dog, 1 = cat
+    # uuid  -> unique identifier
+    ## methods
+    # get_json() -> return a json with all measures
+
+    def __init__(self, name, uuid, radio,race,age):
         self.name = name
+        self.age = age
+        self.race = race
         self.uuid = uuid
         self.radio = radio
         self.init_sensor()
