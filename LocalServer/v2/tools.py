@@ -48,6 +48,7 @@ class Tools:
         for sensor in self.sensors:
             # All captor type need to have a get_json() methode
             result = json.dumps(result,sensor.get_json())
+            print("Sensor: " + str(sensor))
 
         print(result)
 
