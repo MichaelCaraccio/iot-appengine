@@ -1,8 +1,8 @@
 import requests
 import json
-import urllib3, re
 import configparser
 from sensor_tag_virtual import Sensor_tag_virtual
+from sensor_tag_real import Sensor_tag_real
 
 
 #####                                 #####
@@ -33,7 +33,7 @@ class Tools:
         self.sensors = []
 
     # Method to add a sensor
-    def add_sensor(self,sensor):
+    def add_sensor(self, sensor):
         self.sensors.append(sensor)
 
     def get_external_ip(self):
