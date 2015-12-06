@@ -20,7 +20,7 @@ public class chartsRessource {
     @GET
     @Produces("application/json")
     @Path("/{days}/{uuid}")
-    public ArrayList<SensorTag> getAll(@PathParam("uuid") String uuid, @PathParam("uuid") int days) {
+    public ArrayList<SensorTag> getAll(@PathParam("uuid") String uuid, @PathParam("days") int days) {
         return getSensorTags(uuid, days);
     }
 
