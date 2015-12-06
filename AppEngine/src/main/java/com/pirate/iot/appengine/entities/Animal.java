@@ -6,8 +6,6 @@ import org.json.JSONObject;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *
@@ -19,6 +17,7 @@ public class Animal {
     private String uUID;
     private String name;
     private String age;
+    private String location;
 
     public Animal() {
 
@@ -42,6 +41,15 @@ public class Animal {
         this.uUID = data.getString("uUID");
         this.name = data.getString("name");
         this.age = data.getString("age");
+    }
+
+    @XmlElement(name = "location")
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     @XmlElement(name = "race")
@@ -80,19 +88,20 @@ public class Animal {
         this.age = age;
     }
 
-    public void register(DatastoreService datastore)
+    public void register(DatastoreService datastore, String idLocal)
     {
         //create entity type (kind) "Sensortag"
-        Entity pi = new Entity("Animal",uUID);
+        Entity animal = new Entity("Animal", this.uUID);
 
         // assign properties to entity
-        pi.setProperty("race", race);
-        pi.setProperty("uUID", uUID);
-        pi.setProperty("name", name);
-        pi.setProperty("age", age);
+        animal.setProperty("race", race);
+        animal.setProperty("uUID", this.uUID);
+        animal.setProperty("name", name);
+        animal.setProperty("age", age);
+        animal.setProperty("location", idLocal);
 
         // store entity in datastore
-        datastore.put(pi);
+        datastore.put(animal);
     }
 
     @Override

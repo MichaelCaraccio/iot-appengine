@@ -114,7 +114,7 @@ public class Pi {
             JSONObject animalJSON = animalsJSON.getJSONObject(i);
 
             Animal animal = new Animal(animalJSON.getInt("race"),animalJSON.getString("uuid"),animalJSON.getString("name"),animalJSON.getString("age"));
-            animal.register(datastore);
+            animal.register(datastore,uUID);
         }
     }
 
