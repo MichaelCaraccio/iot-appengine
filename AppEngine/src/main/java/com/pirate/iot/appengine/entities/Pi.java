@@ -121,10 +121,10 @@ public class Pi {
     @Override
     public String toString() {
         return "{" +
-                "\n \"externalURL\":\"" + externalURL + "\"," +
-                "\n \"uUID\":" + uUID + "," +
-                "\n \"friendlyName\":" + friendlyName + "," +
-                "\n \"registerDate\":" + registerDate + "," +
+                "\n externalURL:" + externalURL + "," +
+                "\n uUID:" + uUID + "," +
+                "\n friendlyName:" + friendlyName + "," +
+                "\n registerDate:" + registerDate + "," +
                 "\n}";
     }
 }
