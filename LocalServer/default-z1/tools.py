@@ -1,7 +1,6 @@
 import requests
 import json
 import configparser
-from sensor_tag_virtual import Sensor_tag_virtual
 from sensor_tag_real import Sensor_tag_real
 
 
