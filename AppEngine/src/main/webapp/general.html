@@ -169,17 +169,22 @@
 
                 <div class="col-md-12">
                     <div class="sm-st clearfix">
-                        <h3>Pressure, humidity and Temperature</h3>
 
-                        <div id="chartPH"></div>
+                        <h2 style="color: darkred">09 Data collection backend for Internet of Things on Google App
+                            Engine</h2>
 
-                        <h3>Gyroscope and accelerometer</h3>
+                        <h4 style="color: #2a6496">Sensor Tag</h4>
+                        <a href="/rest/sensortag/random/5">Random 5</a></br>
+                        <a href="/rest/fetch">Fetch a data batch</a></br>
+                        <a href="/rest/animals">Get Animal List</a></br>
 
-                        <div id="chartGyro"></div>
+                        <h4 style="color: #2a6496">Get all measures of a pet</h4>
 
-                        <h3>Light and Battery status</h3>
+                        <p>
+                            Return a JSON array containing the past x days of data from a pet
+                        </p>
+                        {{URL}}/rest/charts/{days}/{guid}
 
-                        <div id="chartLB"></div>
 
                     </div>
                 </div>
@@ -196,93 +201,5 @@
     </aside><!-- /.right-side -->
 
 </div><!-- ./wrapper -->
-
-<script type="application/javascript">
-
-    function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-                results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-
-    var guid = getParameterByName('guid');
-    var time = getParameterByName('time');
-
-    var address = "/rest/charts/"+time+"/"+ guid;
-    var result = [];
-
-    var getValues = $.getJSON(address, function (data) {
-        result = JSON.stringify(data.slice(0));
-    });
-
-    getValues.complete(function () {
-        //console.log(result);
-
-        var newStr = result.substring(1, result.length - 1);
-        console.log(newStr);
-
-        // Gyroscope and Accelerometer
-        var chart = c3.generate({
-            bindto: '#chartGyro',
-            data: {
-                url: address,
-                mimeType: 'json',
-
-                keys: {
-//                x: 'name', // it's possible to specify 'x' when category axis
-                    value: ['accelX', 'accelY', 'accelZ', 'gyroX', 'gyroY', 'gyroZ']
-                },
-                axis: {
-                    x: {
-//                type: 'category'
-                    }
-                }
-            }
-        });
-
-        // Pressure and humidity
-        var chart = c3.generate({
-            bindto: '#chartPH',
-            data: {
-                url: address,
-                mimeType: 'json',
-
-                keys: {
-//                x: 'name', // it's possible to specify 'x' when category axis
-                    value: ['pressure', 'humidity', 'objtemp']
-                },
-                axis: {
-                    x: {
-//                type: 'category'
-                    }
-                }
-            }
-        });
-
-        // Light and Battery
-        var chart = c3.generate({
-            bindto: '#chartLB',
-            data: {
-                url: address,
-                mimeType: 'json',
-
-                keys: {
-//                x: 'name', // it's possible to specify 'x' when category axis
-                    value: ['light', 'battery']
-                },
-                axis: {
-                    x: {
-//                type: 'category'
-                    }
-                }
-            }
-        });
-
-
-    });
-
-
-</script>
 </body>
 </html>

@@ -4168,6 +4168,7 @@ padding: 6px 10px;
   padding: 7px 13px;
   border-top: 1px solid #eee;
   text-align: center;
+  margin-top: 50vh;
 }
 
 .stat-elem {
@@ -4205,4 +4206,13 @@ padding: 6px 10px;
 }
 .st-blue {
   background-color: #23b7e5;
+}
+
+.padding-button{
+  margin-left: 10px;
+  width: 20%;
+  color: white;
+}
+.panel-bottom{
+  padding-bottom: 15px;
 }

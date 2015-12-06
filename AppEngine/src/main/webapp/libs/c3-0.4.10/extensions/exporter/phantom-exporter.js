@@ -10,7 +10,7 @@
 if (!String.prototype.format) {
   String.prototype.format = function() {
     var args = arguments;
-    return this.replace(/{(\d+)}/g, function(match, number) { 
+    return this.replace(/{(\d+)}/g, function(match, number) {
       return typeof args[number] != 'undefined'
         ? args[number]
         : match
@@ -63,7 +63,7 @@ if (system.args.length < 3 ) {
 			};
 		}
 	} else {
-		// check if size is defined in chart, 
+		// check if size is defined in chart,
 		// else apply defaults
 		page.viewportSize = {
 			height: (opts.size && opts.size.height) ? opts.size.height : 320,
@@ -74,7 +74,7 @@ if (system.args.length < 3 ) {
 
 page.onResourceRequested = function(requestData, request) {
   console.log('::loading resource ', requestData['url']);
-};	
+};
 
 // helpful debug functions
 page.onConsoleMessage = function(msg){
@@ -97,9 +97,9 @@ page.onError = function(msg, trace) {
 // render page
 function injectVerify(script) {
 	var req = page.injectJs(script);
-	if (!req) { 
+	if (!req) {
 		console.log( '\nError!\n' + script + ' not found!\n' );
-		phantom.exit(1); 
+		phantom.exit(1);
 	}
 }
 
@@ -130,7 +130,7 @@ page.onLoadFinished = function() {
 		page.render(out);
 		phantom.exit();
 	}, 300);
-}
+};
 
 //  apply css inline because that usually renders better
 var css = '';

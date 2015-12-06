@@ -43,11 +43,11 @@ c3ext.generate = function (options) {
         if (_zoom2_maxItems > totalItems)
             _zoom2_maxItems = totalItems;
         refresh();
-    }
+    };
     zoom2.dehance = function () {
         _zoom2_maxItems = Math.ceil(_zoom2_maxItems / 2) + 1;
         refresh();
-    }
+    };
 
     zoom2.maxItems = function () { return _zoom2_maxItems; };
     function zoomAndReduceData(list, zoomRange, func, maxItems) {
@@ -96,11 +96,11 @@ c3ext.generate = function (options) {
         }
         Q.copy(data, originalData);
         refresh();
-    }
+    };
     chart.unload = function (names) {
         unload(names);
         refresh();
-    }
+    };
 
     function unload(names) {
         originalData.columns.removeAll(function (t) { names.contains(t); });
@@ -108,14 +108,12 @@ c3ext.generate = function (options) {
 
 
     function refresh() {
-        var data = Q.copy(originalData)
+        var data = Q.copy(originalData);
         getDataForZoom(data);
         _chart_load_org(data);
-    };
-
-
+    }
     return chart;
-}
+};
 
 c3ext.ZoomBehavior = function (options) {
     var zoom = { __type: "ZoomBehavior" };
@@ -140,7 +138,7 @@ c3ext.ZoomBehavior = function (options) {
         totalItems = options.totalItems || 0;
         currentZoom = [0, totalItems];
         _zoomChanged = options.changed || _zoomChanged;
-    }
+    };
 
     zoom.setOptions(options);
 
@@ -186,7 +184,7 @@ c3ext.ZoomBehavior = function (options) {
 
     zoom.getZoom = function () {
         return { totalItems: totalItems, currentZoom: currentZoom.slice() };
-    }
+    };
 
     zoom.factor = function (factor, skipDraw) {
         if (arguments.length == 0)
@@ -197,7 +195,7 @@ c3ext.ZoomBehavior = function (options) {
         if (skipDraw)
             return;
         applyZoomAndPan();
-    }
+    };
     zoom.left = function (left, skipDraw) {
         if (arguments.length == 0)
             return _left;
@@ -212,7 +210,7 @@ c3ext.ZoomBehavior = function (options) {
         if (skipDraw)
             return;
         applyZoomAndPan();
-    }
+    };
 
     zoom.zoomAndPanByRatio = function (zoomRatio, panRatio) {
 
@@ -229,28 +227,28 @@ c3ext.ZoomBehavior = function (options) {
         }
         zoom.left(finalLeft, true);
         applyZoomAndPan();
-    }
+    };
 
     zoom.zoomIn = function () {
         zoom.zoomAndPanByRatio(2, 0);
-    }
+    };
 
     zoom.zoomOut = function () {
         zoom.zoomAndPanByRatio(0.5, 0);
-    }
+    };
 
     zoom.panLeft = function () {
         zoom.zoomAndPanByRatio(1, -1);
-    }
+    };
     zoom.panRight = function () {
         zoom.zoomAndPanByRatio(1, 1);
-    }
+    };
 
     zoom.reset = function () {
         _left = 0;
         _zoom2_factor = 1;
         applyZoomAndPan();
-    }
+    };
 
     function doZoom() {
         if (deltaY != 0) {
@@ -282,7 +280,7 @@ c3ext.ZoomBehavior = function (options) {
 
     return zoom;
 
-}
+};
 
 if (typeof (Q) == "undefined") {
     var Q = function () {
@@ -343,7 +341,7 @@ if (typeof (Timer) == "undefined") {
         this.action = action;
         if (ms != null)
             this.set(ms);
-    }
+    };
 
     Timer.prototype.set = function (ms) {
         if (ms == null)
@@ -354,12 +352,12 @@ if (typeof (Timer) == "undefined") {
         if (ms == null)
             return;
         this.timeout = window.setTimeout(this.onTick.bind(this), ms);
-    }
+    };
 
     Timer.prototype.onTick = function () {
         this.clear();
         this.action();
-    }
+    };
 
     Timer.prototype.clear = function (ms) {
         if (this.timeout == null)
