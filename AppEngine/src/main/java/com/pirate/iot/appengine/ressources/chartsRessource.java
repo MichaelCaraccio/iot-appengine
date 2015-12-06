@@ -19,6 +19,13 @@ public class chartsRessource {
 
     @GET
     @Produces("application/json")
+    @Path("/all/{uuid}")
+    public ArrayList<SensorTag> getAll(@PathParam("uuid") String uuid) {
+        return getSensorTags(uuid, 0);
+    }
+
+    @GET
+    @Produces("application/json")
     @Path("/{days}/{uuid}")
     public ArrayList<SensorTag> getAll(@PathParam("uuid") String uuid, @PathParam("days") int days) {
         return getSensorTags(uuid, days);
@@ -29,24 +36,28 @@ public class chartsRessource {
 
         //TODO Limit number of result
         Query q = new Query("Sensortag");
+
+
         Query.Filter uuidFilter =
                 new Query.FilterPredicate("guid",
                         Query.FilterOperator.EQUAL,
                         uuid);
         q.setFilter(uuidFilter);
 
-        //Last 5 days
-        Calendar cal = Calendar.getInstance();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
+        if (days != 0) {
+            //Last 5 days
+            Calendar cal = Calendar.getInstance();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
 
-        //TODO maybe use a parameter from URI
-        cal.add(Calendar.DATE, -days);
+            //TODO maybe use a parameter from URI
+            cal.add(Calendar.DATE, -days);
 
-        Query.Filter DateFilter =
-                new Query.FilterPredicate("date",
-                        Query.FilterOperator.GREATER_THAN_OR_EQUAL,
-                        dateFormat.format(cal.getTime()));
-        q.setFilter(DateFilter);
+            Query.Filter DateFilter =
+                    new Query.FilterPredicate("date",
+                            Query.FilterOperator.GREATER_THAN_OR_EQUAL,
+                            dateFormat.format(cal.getTime()));
+            q.setFilter(DateFilter);
+        }
 
         List<Entity> results = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
 
