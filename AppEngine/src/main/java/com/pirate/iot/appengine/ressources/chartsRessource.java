@@ -19,12 +19,12 @@ public class chartsRessource {
 
     @GET
     @Produces("application/json")
-    @Path("/all/{uuid}")
-    public ArrayList<SensorTag> getAll(@PathParam("uuid") String uuid) {
-        return getSensorTags(uuid);
+    @Path("/{days}/{uuid}")
+    public ArrayList<SensorTag> getAll(@PathParam("uuid") String uuid, @PathParam("uuid") int days) {
+        return getSensorTags(uuid, days);
     }
 
-    private ArrayList<SensorTag> getSensorTags(String uuid) {
+    private ArrayList<SensorTag> getSensorTags(String uuid, int days) {
         ArrayList<SensorTag> list = new ArrayList<SensorTag>();
 
         //TODO Limit number of result
@@ -40,7 +40,7 @@ public class chartsRessource {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS");
 
         //TODO maybe use a parameter from URI
-        cal.add(Calendar.DATE, -5);
+        cal.add(Calendar.DATE, -days);
 
         Query.Filter DateFilter =
                 new Query.FilterPredicate("date",
@@ -50,37 +50,36 @@ public class chartsRessource {
 
         List<Entity> results = datastore.prepare(q).asList(FetchOptions.Builder.withDefaults());
 
-        for(Entity entity: results)
-        {
+        for (Entity entity : results) {
             SensorTag sensorTag = new SensorTag(
-                    (String)entity.getProperty("guid"),
-                    (Boolean)entity.getProperty("isActivate"),
-                    (Double)entity.getProperty("pressure"),
-                    (Double)entity.getProperty("pressure_t"),
-                    (Double)entity.getProperty("humidity"),
-                    (Double)entity.getProperty("humidity_t"),
-                    (Double)entity.getProperty("objtemp"),
-                    (Double)entity.getProperty("accelX"),
-                    (Double)entity.getProperty("accelY"),
-                    (Double)entity.getProperty("accelZ"),
-                    (Double)entity.getProperty("gyroX"),
-                    (Double)entity.getProperty("gyroY"),
-                    (Double)entity.getProperty("gyroY"),
-                    (Double)entity.getProperty("magX"),
-                    (Double)entity.getProperty("magY"),
-                    (Double)entity.getProperty("magZ"),
-                    (Double)entity.getProperty("light"),
-                    (Double)entity.getProperty("battery"),
-                    ((Long)entity.getProperty("key1")).intValue(),
-                    ((Long)entity.getProperty("key2")).intValue(),
-                    ((Long)entity.getProperty("reed")).intValue(),
-                    ((Long)entity.getProperty("buzzer")).intValue(),
-                    ((Long)entity.getProperty("LED1")).intValue(),
-                    ((Long)entity.getProperty("LED2")).intValue(),
-                    (String)entity.getProperty("Radio")
+                    (String) entity.getProperty("guid"),
+                    (Boolean) entity.getProperty("isActivate"),
+                    (Double) entity.getProperty("pressure"),
+                    (Double) entity.getProperty("pressure_t"),
+                    (Double) entity.getProperty("humidity"),
+                    (Double) entity.getProperty("humidity_t"),
+                    (Double) entity.getProperty("objtemp"),
+                    (Double) entity.getProperty("accelX"),
+                    (Double) entity.getProperty("accelY"),
+                    (Double) entity.getProperty("accelZ"),
+                    (Double) entity.getProperty("gyroX"),
+                    (Double) entity.getProperty("gyroY"),
+                    (Double) entity.getProperty("gyroY"),
+                    (Double) entity.getProperty("magX"),
+                    (Double) entity.getProperty("magY"),
+                    (Double) entity.getProperty("magZ"),
+                    (Double) entity.getProperty("light"),
+                    (Double) entity.getProperty("battery"),
+                    ((Long) entity.getProperty("key1")).intValue(),
+                    ((Long) entity.getProperty("key2")).intValue(),
+                    ((Long) entity.getProperty("reed")).intValue(),
+                    ((Long) entity.getProperty("buzzer")).intValue(),
+                    ((Long) entity.getProperty("LED1")).intValue(),
+                    ((Long) entity.getProperty("LED2")).intValue(),
+                    (String) entity.getProperty("Radio")
             );
 
-            sensorTag.setDatetime((String)entity.getProperty("date"));
+            sensorTag.setDatetime((String) entity.getProperty("date"));
 
             list.add(sensorTag);
         }
