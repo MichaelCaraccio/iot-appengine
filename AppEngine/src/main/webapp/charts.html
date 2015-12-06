@@ -17,25 +17,110 @@
     <!-- Load d3.js and c3.js -->
     <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="./libs/c3-0.4.10/c3.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 
 <body>
 
-<h1></h1>
+<h1>Pressure, humidity and Temperature</h1>
+<div id="chartPH"></div>
 
-<div id="chart"></div>
+<h1>Gyroscope and accelerometer</h1>
+<div id="chartGyro"></div>
+
+<h1>Light and Battery status</h1>
+<div id="chartLB"></div>
 
 <script type="application/javascript">
 
-    var chart = c3.generate({
-        bindto: '#chart',
-        data: {
-            columns: [
-                ['data1', 30, 200, 100, 400, 150, 250],
-                ['data2', 50, 20, 10, 40, 15, 25]
-            ]
-        }
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    var guid = getParameterByName('guid');
+
+    var address = "/rest/charts/1/" + guid;
+    var result = [];
+
+    var getValues = $.getJSON(address, function (data) {
+            result = JSON.stringify(data.slice(0));
+        });
+
+    getValues.complete(function() {
+        console.log( "second complete" );
+        //console.log(result);
+
+        var newStr = result.substring(1, result .length-1);
+        console.log(newStr);
+
+        // Gyroscope and Accelerometer
+        var chart = c3.generate({
+            bindto: '#chartGyro',
+            data: {
+                url: address,
+                mimeType: 'json',
+
+                keys: {
+//                x: 'name', // it's possible to specify 'x' when category axis
+                    value: ['accelX', 'accelY', 'accelZ', 'gyroX', 'gyroY', 'gyroZ']
+                },
+                axis: {
+                    x: {
+//                type: 'category'
+                    }
+                }
+            }
+        });
+
+        // Pressure and humidity
+        var chart = c3.generate({
+            bindto: '#chartPH',
+            data: {
+                url: address,
+                mimeType: 'json',
+
+                keys: {
+//                x: 'name', // it's possible to specify 'x' when category axis
+                    value: ['pressure', 'humidity', 'objtemp']
+                },
+                axis: {
+                    x: {
+//                type: 'category'
+                    }
+                }
+            }
+        });
+
+        // Light and Battery
+        var chart = c3.generate({
+            bindto: '#chartLB',
+            data: {
+                url: address,
+                mimeType: 'json',
+
+                keys: {
+//                x: 'name', // it's possible to specify 'x' when category axis
+                    value: ['light', 'battery']
+                },
+                axis: {
+                    x: {
+//                type: 'category'
+                    }
+                }
+            }
+        });
+
+
+
     });
+
+
+
+
+
 </script>
 </body>
 </html>
