@@ -53,7 +53,7 @@ public class AnimalsRessource {
             Query.Filter PiFilter =
                     new Query.FilterPredicate("uUID",
                             Query.FilterOperator.EQUAL,
-                            (String)entity.getProperty("location"));
+                            entity.getProperty("location"));
             qPi.setFilter(PiFilter);
 
             List<Entity> resultsPi = datastore.prepare(qPi).asList(FetchOptions.Builder.withDefaults());
@@ -65,7 +65,7 @@ public class AnimalsRessource {
                         (String) resultsPi.get(0).getProperty("friendlyName"),
                         (String) resultsPi.get(0).getProperty("registerDate")
 
-                )).toString());
+                )));
             }
 
             list.add(animal);

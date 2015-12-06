@@ -17,7 +17,7 @@ public class Animal {
     private String uUID;
     private String name;
     private String age;
-    private String location;
+    private Pi location;
 
     public Animal() {
 
@@ -44,11 +44,11 @@ public class Animal {
     }
 
     @XmlElement(name = "location")
-    public String getLocation() {
+    public Pi getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Pi location) {
         this.location = location;
     }
 

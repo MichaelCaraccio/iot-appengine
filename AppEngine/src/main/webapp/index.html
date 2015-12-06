@@ -10,6 +10,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>09 Data collection backend for Internet of Things on Google App Engine</title>
+    <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 
 <body>
@@ -20,16 +21,41 @@
 <a href="/rest/fetch">Fetch a data batch</a></br>
 <a href="/rest/animals">Get Animal List</a></br>
 
-<a href="/rest/charts/1/51fa8287-a719-4c1b-8177-7ec829f6e08r">51fa8287-a719-4c1b-8177-7ec829f6e08r</a>
-
 <h3 style="color: #2a6496">Get all measures of a pet</h3>
+
 <p>
     Return a JSON array containing the past x days of data from a pet
 </p>
 {{URL}}/rest/charts/{days}/{guid}
 
+
 <h3 style="color: #2a6496">DashBoard</h3>
-<a href="/charts.html?guid=51fa8287-a719-4c1b-8177-7ec829f6e08r">Here</a>
+<div id ="dashboardList"></div>
+
+
+
+<!-- ************************************************************* -->
+<!-- Get UUID in Datastore and create dynamically links for charts -->
+<!-- ************************************************************* -->
+<script type="application/javascript">
+
+    var address = "/rest/animals";
+    var result = [];
+
+    var getValues = $.getJSON(address, function (data) {
+        result = data;
+    });
+
+    getValues.complete(function () {
+        console.log(result);
+
+        var div = document.getElementById('dashboardList');
+
+        for (var i = 0; i < result["animals"].length; i++) {
+            div.innerHTML = div.innerHTML + "<a href=\"/charts.html?guid="+result["animals"][i]["uUID"]+"\">"+result["animals"][i]["name"]+"</a><br>";
+        }
+    });
+</script>
 
 </body>
 </html>

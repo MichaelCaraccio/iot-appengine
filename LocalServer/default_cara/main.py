@@ -47,6 +47,7 @@ if __name__ == '__main__':
     # sensor need attributs name and uuid
     # tools.add_sensor(Sensor_tag_virtual( 'virtual_1', '51fa8287-a719-4c1b-8177-7ec829f6e08e', 'BLE'))
     tools.add_sensor(Sensor_tag_virtual( 'virtual_2', '51fa8287-a719-4c1b-8177-7ec829f6e08r', 'BLE', 0, "2015-12-05 11:03:06"))
+    tools.add_sensor(Sensor_tag_virtual( 'virtual_1', '11112222-a319-4c1b-8177-6r7ew6qr8ew7', '6Lowpan', 0, "2015-01-03 11:03:06"))
 
     # tell to app Engine backend that data can be fetch from him
     tools.register_local()
