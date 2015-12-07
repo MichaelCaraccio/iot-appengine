@@ -1,7 +1,15 @@
-# iot-appengine
-Data collection backend for Internet of Things on Google App Engine using TI SensorTag and Zolertia Z1
+# Project
+The purpose of this project is to follow your pet habits. Put in your cat or dog neckless the sensors and get some informations about them (how much do they walk per day (not yet implemented), temperature, etc).
 
-###Three folders
+### Software
+The Data collection for Internet of Things run on Google App Engine.
+
+### Harware
+* Zolertia Z1
+* TI Sensortag
+* Raspberry PI
+
+### Three main folders
  * **AppEngine** : Source code for your application AppEngine
  * **Contiki** : Source code for your Z1 and Sensortag
  * **Localserver** : Source code for your RaspberryPi
