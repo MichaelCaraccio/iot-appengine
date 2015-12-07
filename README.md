@@ -16,15 +16,15 @@ The Data collection for Internet of Things run on Google App Engine.
 
 ## 1. Deploy you Local Server (RapsberryPi)
 
-### Setup
-#### Requirements
+### 1.1 Setup
+#### 1.1.1Requirements
 ```bash
 sudo apt-get install python python-pip
 sudo pip install flask
 pip install urllib3
 pip install requests
 ```
-### Deploy	
+### 1.2 Deploy	
 - Retrieve the sources from our repository
 - Copy the default directory
 - Modify the config.cfgg file
@@ -37,7 +37,7 @@ port | Flask port. It need to be open by your firewall
 distant_ip | App Engine application URL
 friendly_name | A simple name for your server
 
-Example:
+**Example:**
 ```
 [general]
 auto_external: true 	
@@ -48,7 +48,7 @@ friendly_name: deruaz_home
 ```
 
 - Modify the main to add the sensors (virtual or real sensors)
-Example:
+**Example:**
 
 ```python
 # Add a virtual sensor
@@ -57,7 +57,7 @@ tools.add_sensor(Sensor_tag_virtual( 'Lassie', '23fa8287-a719-4c1b-8177-7ec829f6
 tools.add_sensor(Sensor_tag_real("Simba", '01111111-a719-4c1b-8177-7ec829d6e02a', '6Lowpan', 1, "2013-04-05 11:03:06", "http://[aaaa::c30c:0:0:1560]/"))
 ```
 
-### Running It
+### 1.3 Running It
 
 - Make start.sh executable
 ```bash
