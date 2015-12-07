@@ -1,7 +1,8 @@
 # Project
-The purpose of this project is to follow your pet habits. Put in your cat or dog neckless the sensors and get some informations about them (how much do they walk per day (not yet implemented), temperature, etc).
+The purpose of this project is to follow your pet's habits. Put in your cat or dog neckless the sensors and get some informations about them (how much do they walk per day (not yet implemented), temperature, etc).
 
 Our project : [http://1.iot-pirate.appspot.com/](http://1.iot-pirate.appspot.com/)
+Take a look at our Wiki : [Wiki](https://github.com/MichaelCaraccio/iot-appengine/wiki)
 
 ![iot website project](http://www.mcaraccio.ch/assets/img/iot_website2.png)
 
@@ -12,7 +13,7 @@ The Data collection for Internet of Things run on Google App Engine.
 * Zolertia Z1  [Zolertia website](http://zolertia.io/z1)
 * TI Sensortag [TI website](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/)
 * Raspberry PI [RaspberryPi website](https://www.raspberrypi.org/)
-* 
+
 ![iot website project](http://www.mcaraccio.ch/assets/img/iotmontage.png)
 
 ### Three main folders
