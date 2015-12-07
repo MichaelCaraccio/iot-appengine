@@ -1,8 +1,7 @@
 package com.pirate.iot.appengine.virtual;
 
-import com.pirate.iot.appengine.entities.Fetch;
+import com.pirate.iot.appengine.utility.Fetch;
 import com.pirate.iot.appengine.entities.Pi;
-import com.pirate.iot.appengine.ressources.FetchRessource;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;

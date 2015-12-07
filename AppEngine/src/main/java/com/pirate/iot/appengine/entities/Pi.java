@@ -13,7 +13,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
+ *  Entity representing a Pi --> a local server
+ *  can be easily parse to JSON
  */
 @XmlRootElement(name = "pi")
 public class Pi {
@@ -93,6 +94,11 @@ public class Pi {
         this.sensors = sensors;
     }
 
+    /**
+     * register the current local server in the datastore
+     * Add all related sensors (pet) also
+     * @param datastore
+     */
     public void register(DatastoreService datastore)
     {
         //create entity type (kind) "Sensortag"

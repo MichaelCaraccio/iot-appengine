@@ -8,7 +8,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ *  Entity representing a pet
+ *  can be easily parse to JSON
  */
 @XmlRootElement(name = "animal")
 public class Animal {

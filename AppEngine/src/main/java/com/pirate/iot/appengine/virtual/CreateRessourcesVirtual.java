@@ -9,7 +9,8 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 /**
- *
+ *  Dev purpose
+ *  to add fake local server in ds
  */
 public class CreateRessourcesVirtual {
 

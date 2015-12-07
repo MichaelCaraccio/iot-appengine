@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
+    <!-- Allow backend to retrive data from registered local servers every 10 minutes -->
     <cron>
         <url>/rest/fetch/</url>
         <description>Fetch every 10 minutes data from all registered LocalServers</description>

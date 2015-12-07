@@ -2,7 +2,7 @@ package com.pirate.iot.appengine.ressources;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.pirate.iot.appengine.entities.Fetch;
+import com.pirate.iot.appengine.utility.Fetch;
 import com.pirate.iot.appengine.entities.Pi;
 
 import javax.ws.rs.GET;
@@ -10,6 +10,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
+/**
+ * racine for all fetching routes
+ * used for Backend
+ * This route is used by a cron job to fetch from all registered local server the sensors data
+ */
 @Path("/fetch")
 public class FetchRessource {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -17,12 +22,11 @@ public class FetchRessource {
     private Fetch fetch;
 
     /**
-     * @return
+     * Default route
+     * @return Response
      */
     @GET
     public Response fetchAll() {
-        //TODO change if no virtual
-        //this.fetch = new VirtualFetch();
         this.fetch = new Fetch();
 
         //get List PIs

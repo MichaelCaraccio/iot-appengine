@@ -1,6 +1,8 @@
-package com.pirate.iot.appengine.entities;
+package com.pirate.iot.appengine.utility;
 
 import com.google.appengine.api.datastore.*;
+import com.pirate.iot.appengine.entities.Pi;
+import com.pirate.iot.appengine.entities.SensorTag;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -11,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by kamyh on 23.11.15.
+ *  Utility to fetch data from local servers registered in the datastore
+ *
  */
 public class Fetch {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-
 
     /**
      * Retrieved all datas sensors from a specific PI
@@ -56,6 +58,7 @@ public class Fetch {
     /**
      * parse all retrieved datas
      * @param data <-- JSON Table []
+     *
      */
     protected void parse(String data)
     {
@@ -72,6 +75,10 @@ public class Fetch {
         }
     }
 
+    /**
+     * get a list of all registered Pis in datastore
+     * @return ArrayList<Pi>
+     */
     public ArrayList<Pi> getListPis()
     {
         ArrayList<Pi> pis = new ArrayList<>();

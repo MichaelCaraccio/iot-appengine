@@ -14,10 +14,19 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * racine for all animals related routes
+ * used for FrontEnd
+ */
 @Path("/animals/")
 public class AnimalsRessource {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
+    /**
+     * Default route for /animals
+     *
+     * @return
+     */
     @GET
     @Produces("application/json")
     public HashMap<String, List> fetchAll() {
@@ -29,9 +38,10 @@ public class AnimalsRessource {
         return result;
     }
 
-
-
-
+    /**
+     * Retrive all animals stored in datastore
+     * @return ArrayList<Animal>
+     */
     private ArrayList<Animal> getAnimals() {
         ArrayList<Animal> list = new ArrayList<Animal>();
 

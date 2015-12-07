@@ -10,15 +10,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * racine for all measures related routes
+ * used for FrontEnd
+ */
 @Path("/sensortag/")
 public class SensorTagRessource {
 
     public static final String WEB_INF_RAW_DATA_SENSORTAG_SET_2_JSON = "WEB-INF/raw_data/sensortag_set_2.json";
 
     /**
-     *
+     * For dev purpose
+     * Return a set of randomize data from a json file
      * @param number
-     * @return
+     * @return HashMap<String, List> measures
      */
     @GET
     @Produces("application/json")
@@ -52,8 +57,9 @@ public class SensorTagRessource {
     }
 
     /**
-     *
-     * @return
+     * For dev purpose
+     * Return a set of randomize data from a json file
+     * @return SensorTag
      */
     @GET
     @Produces("application/json")
@@ -70,8 +76,9 @@ public class SensorTagRessource {
     }
 
     /**
-     *
-     * @return
+     * Default route
+     * dev purpose
+     * @return Response
      */
     @POST
     @Consumes("application/json")

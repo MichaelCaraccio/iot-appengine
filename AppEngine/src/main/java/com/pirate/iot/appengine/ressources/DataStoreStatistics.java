@@ -9,9 +9,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 /**
- * Created by michaelcaraccio on 06/12/15.
+ * racine for all stats related routes
+ * used for FrontEnd
  */
-
 @Path("/stats")
 public class DataStoreStatistics {
     /**

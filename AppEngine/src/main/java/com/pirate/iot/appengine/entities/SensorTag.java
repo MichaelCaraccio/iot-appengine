@@ -9,7 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
+ *  Entity representing a sensor measure
+ *  can be easily parse to JSON
  */
 @XmlRootElement(name = "sensortag")
 public class SensorTag {
@@ -384,6 +385,10 @@ public class SensorTag {
         this.radio = radio;
     }
 
+    /**
+     * used to add measure in datastore
+     * @param datastore
+     */
     public void toDatastore(DatastoreService datastore)
     {
         //create entity type (kind) "Sensortag"

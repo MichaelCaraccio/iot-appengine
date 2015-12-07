@@ -13,13 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * racine for all registering related routes
+ * used for BackEnd
+ */
 @Path("/register/")
 public class RegisterRessource {
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
     /**
-     *
-     * @return
+     * Default route
+     * @return Response
      */
     @POST
     @Consumes("application/json")
@@ -28,11 +32,17 @@ public class RegisterRessource {
 
         System.out.println(pi);
 
+        //Register Pi in datastore
         pi.register(datastore);
 
+        //TODO check if really added in ds
         return Response.status(201).entity(result).build();
     }
 
+    /**
+     * for dev purpose only
+     * @return Response
+     */
     @GET
     @Consumes("application/json")
     @Path("/fake")

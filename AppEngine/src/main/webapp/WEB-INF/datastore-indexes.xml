@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <datastore-indexes autoGenerate="true">
+    <!-- Allow us to retrive all specific pet measures for a given time -->
     <datastore-index kind="Sensortag" ancestor="false" source="manual">
         <property name="guid" direction="asc"/>
         <property name="date" direction="asc"/>
