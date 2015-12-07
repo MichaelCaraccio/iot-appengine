@@ -56,17 +56,17 @@ class Sensor_tag_real:
     def get_json(self):
 
         response = urllib3.PoolManager().request('GET',self.url)
-#        response = urllib3.request.urlopen(self.url)
+        #        response = urllib3.request.urlopen(self.url)
         print(response.data)
-        
+
         #str_response = response.readall().decode('utf-8')
         data = json.loads(response.data)
-#        response = requests.get(self.url)
-#        data = json.loads(response, 'utf-8')
-#s        response = requests.get(self.url)
-#        print(response.json())
-#        data = response.json()
-#        data = json.loads(response)
+        #        response = requests.get(self.url)
+        #        data = json.loads(response, 'utf-8')
+        #s        response = requests.get(self.url)
+        #        print(response.json())
+        #        data = response.json()
+        #        data = json.loads(response)
         print(data)
         today = datetime.date.today()
 
