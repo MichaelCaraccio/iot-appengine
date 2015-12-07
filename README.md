@@ -5,9 +5,9 @@ The purpose of this project is to follow your pet habits. Put in your cat or dog
 The Data collection for Internet of Things run on Google App Engine.
 
 ### Harware
-* Zolertia Z1
-* TI Sensortag
-* Raspberry PI
+* Zolertia Z1  [Zolertia website](http://zolertia.io/z1)
+* TI Sensortag [TI website](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/)
+* Raspberry PI [RaspberryPi website](https://www.raspberrypi.org/)
 
 ### Three main folders
  * **AppEngine** : Source code for your application AppEngine
@@ -25,11 +25,9 @@ pip install urllib3
 pip install requests
 ```
 ### Deploy	
-
 - Retrieve the sources from our repository
 - Copy the default directory
 - Modify the config.cfgg file
- 
 
 Property  | Description
 ------------- | -------------
