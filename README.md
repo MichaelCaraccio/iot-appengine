@@ -1,17 +1,22 @@
 # iot-appengine
 Data collection backend for Internet of Things on Google App Engine using TI SensorTag and Zolertia Z1
 
-# Local Server Deploy
+###Three folders
+ * AppEngine : Source code for your application AppEngine
+ * Contiki : Source code for your Z1 and Sensortag
+ * Localserver : Source code for your RaspberryPi
 
-## Setup
+## 1. Deploy you Local Server (RapsberryPi)
 
-### Requierments
-		sudo apt-get install python python-pip
-		sudo pip install flask
-		pip install urllib3
-		pip install requests
-		
-## Deploy	
+### Setup
+#### Requirements
+```bash
+sudo apt-get install python python-pip
+sudo pip install flask
+pip install urllib3
+pip install requests
+```
+### Deploy	
 
 - Retrieve the sources from our repository
 - Copy the default directory
@@ -24,7 +29,7 @@ Data collection backend for Internet of Things on Google App Engine using TI Sen
 		friendly_name: deruaz_home	//a simple name for your server
 - Modify the main to add the sensors
 
-## Running It
+### Running It
 
 - Make start.sh executable
 - Modify start.sh to run the main with the right .cfg file
