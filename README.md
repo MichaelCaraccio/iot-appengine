@@ -3,7 +3,7 @@ The purpose of this project is to follow your pet habits. Put in your cat or dog
 
 Our project : [http://1.iot-pirate.appspot.com/](http://1.iot-pirate.appspot.com/)
 
-![iot website project](http://www.mcaraccio.ch/assets/img/iot_website.png)
+![iot website project](http://www.mcaraccio.ch/assets/img/iot_website2.png)
 
 ### Software
 The Data collection for Internet of Things run on Google App Engine.
