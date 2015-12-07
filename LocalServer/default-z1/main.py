@@ -6,7 +6,7 @@ from sensor_tag_real import Sensor_tag_real
 
 # Initialize the Flask application
 app = Flask(__name__)
-
+app.debug = True
 
 ## ROUTES ##
 
@@ -34,12 +34,12 @@ if __name__ == '__main__':
 
     tools = Tools(uuid, sys.argv[1])
 
-    tools.add_sensor(Sensor_tag_real("Simba", '11111111-a719-4c1b-8177-7ec829d6e02a', '6Lowpan', 1, "2013-04-05 11:03:06", "http://[aaaa::c30c:0:0:1560]/"))
+    tools.add_sensor(Sensor_tag_real("Simba", '01111111-a719-4c1b-8177-7ec829d6e02a', '6Lowpan', 1, "2013-04-05 11:03:06", "http://[aaaa::c30c:0:0:1560]/"))
 
     # tell to app Engine backend that data can be fetch from him
     tools.register_local()
 
     app.run(
-        host="0.0.0.0",
-        port=int(tools.local_port)
+        host="0.0.0.0"#,
+        #port=int(tools.local_port)
     )
