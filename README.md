@@ -1,8 +1,8 @@
 # Project
 The purpose of this project is to follow your pet's habits. Put in your cat or dog neckless the sensors and get some informations about them (how much do they walk per day (not yet implemented), temperature, etc).
 
-Our project : [http://1.iot-pirate.appspot.com/](http://1.iot-pirate.appspot.com/)
-Take a look at our Wiki : [Wiki](https://github.com/MichaelCaraccio/iot-appengine/wiki)
+* Our project : [http://1.iot-pirate.appspot.com/](http://1.iot-pirate.appspot.com/)
+* Take a look at our Wiki : [Wiki](https://github.com/MichaelCaraccio/iot-appengine/wiki)
 
 ![iot website project](http://www.mcaraccio.ch/assets/img/iot_website2.png)
 
