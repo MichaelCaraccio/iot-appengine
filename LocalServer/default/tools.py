@@ -1,7 +1,7 @@
 import requests
 import json
 import urllib3, re
-import configparser
+import ConfigParser
 from sensor_tag_virtual import Sensor_tag_virtual
 
 
@@ -12,7 +12,7 @@ from sensor_tag_virtual import Sensor_tag_virtual
 class Tools:
     def __init__(self, uuid, config_filename):
         self.uuid = uuid
-        self.config = configparser.ConfigParser()
+        self.config = ConfigParser.ConfigParser()
         # TODO Check if config.cfg exist
         self.config.readfp(open(config_filename))
 

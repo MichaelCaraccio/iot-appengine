@@ -1,7 +1,10 @@
 import random
-import json
 import datetime
 
+################################################################
+# Virtual sensor                                               #
+# Allow to instanciate a virtual sensor and generate fake datas#
+################################################################
 class Sensor_tag_virtual:
     ### Sensor interface ##
     ## attributs:
@@ -20,6 +23,7 @@ class Sensor_tag_virtual:
         self.radio = radio
         self.init_sensor()
 
+    # set base values when instanciated
     def init_sensor(self):
         self.pressure = round(random.uniform(500, 700), 6)
         self.pressure_t = round(random.uniform(500, 700), 6)
@@ -58,6 +62,7 @@ class Sensor_tag_virtual:
             val = -round(random.uniform(0, 5) / divider, 6)
         return val
 
+    # To keep fake data coherent
     def keep_in_bound(self, min, max, val):
         if (val > max):
             return max
@@ -108,6 +113,7 @@ class Sensor_tag_virtual:
     def incr_light(self):
         self.light += self.keep_in_bound(0, 1200, self.new_value(1))
 
+    # Increment all sensors measure randomly
     def incr_all(self):
         self.incr_pressure()
         self.incr_pressure_t()
@@ -124,6 +130,7 @@ class Sensor_tag_virtual:
         self.incr_mag_z()
         self.incr_light()
 
+    # Parse all sensor measures in a JSON
     def get_json(self):
         self.incr_all()
         today = datetime.date.today()
