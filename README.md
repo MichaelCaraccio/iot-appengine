@@ -17,7 +17,7 @@ The Data collection for Internet of Things run on Google App Engine.
 ## 1. Deploy you Local Server (RapsberryPi)
 
 ### 1.1 Setup
-#### 1.1.1Requirements
+#### 1.1.1 Requirements
 ```bash
 sudo apt-get install python python-pip
 sudo pip install flask
