@@ -25,9 +25,9 @@ pip install requests
 
 Property  | Description
 ------------- | -------------
-auto_external  | if you have a domaine name put false here and write it to the "external" field
-external  | if you want to use a domaine name
-port | the flask port. It need to be open in your firewall
+auto_external  | Set it to false if you have a domain name and write your domain url in "external" field
+external  | Your domain name (if you got one)
+port | Flask port. It need to be open by your firewall
 distant_ip | App Engine application URL
 friendly_name | A simple name for your server
 
@@ -35,7 +35,7 @@ Example:
 ```
 [general]
 auto_external: true 	
-external: http://exemple.com	
+external: 
 port: 1234 		
 distant_ip: http://1.iot-pirate.appspot.com 
 friendly_name: deruaz_home
