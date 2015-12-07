@@ -64,54 +64,68 @@ class Sensor_tag_virtual:
 
     # To keep fake data coherent
     def keep_in_bound(self, min, max, val):
-        if (val > max):
+        if val > max:
             return max
-        if (val < min):
+        if val < min:
             return min
 
         return val
 
     def incr_pressure(self):
-        self.pressure += self.keep_in_bound(200, 1200, self.new_value(1))
+        self.pressure +=  self.new_value(1)
+        self.pressure = self.keep_in_bound(200, 1200,self.pressure)
 
     def incr_pressure_t(self):
-        self.pressure_t += self.keep_in_bound(200, 1200, self.new_value(1))
+        self.pressure_t +=  self.new_value(1)
+        self.pressure_t = self.keep_in_bound(200, 1200,self.pressure_t)
 
     def incr_humidity(self):
-        self.humidity += self.keep_in_bound(0, 100, self.new_value(10))
+        self.humidity += self.new_value(10)
+        self.humidity = self.keep_in_bound(0, 100,self.humidity)
 
     def incr_humidity_t(self):
-        self.humidity_t += self.keep_in_bound(0, 100, self.new_value(10))
+        self.humidity_t += self.new_value(10)
+        self.humidity_t = self.keep_in_bound(0, 100,self.humidity_t)
 
     def incr_accel_x(self):
-        self.accel_x += self.keep_in_bound(0, 10, self.new_value(100))
+        self.accel_x += self.new_value(100)
+        self.accel_x = self.keep_in_bound(0, 10,self.accel_x)
 
     def incr_accel_y(self):
-        self.accel_y += self.keep_in_bound(0, 10, self.new_value(100))
+        self.accel_y +=  self.new_value(100)
+        self.accel_y = self.keep_in_bound(0, 10,self.accel_y)
 
     def incr_accel_z(self):
-        self.accel_z += self.keep_in_bound(0, 10, self.new_value(100))
+        self.accel_z +=  self.new_value(100)
+        self.accel_z = self.keep_in_bound(0, 10,self.accel_z)
 
     def incr_gyro_x(self):
-        self.gyro_x += self.keep_in_bound(0, 360, self.new_value(1))
+        self.gyro_x +=  self.new_value(1)
+        self.gyro_x = self.keep_in_bound(0, 360,self.gyro_x)
 
     def incr_gyro_y(self):
-        self.gyro_y += self.keep_in_bound(0, 360, self.new_value(1))
+        self.gyro_y +=  self.new_value(1)
+        self.gyro_y = self.keep_in_bound(0, 360,self.gyro_y)
 
     def incr_gyro_z(self):
-        self.gyro_z += self.keep_in_bound(0, 360, self.new_value(1))
+        self.gyro_z +=  self.new_value(1)
+        self.gyro_z = self.keep_in_bound(0, 360,self.gyro_z)
 
     def incr_mag_x(self):
-        self.mag_x += self.keep_in_bound(0, 360, self.new_value(1))
+        self.mag_x +=  self.new_value(1)
+        self.mag_x = self.keep_in_bound(0, 360,self.mag_x)
 
     def incr_mag_y(self):
-        self.mag_y += self.keep_in_bound(0, 360, self.new_value(1))
+        self.mag_y +=  self.new_value(1)
+        self.mag_y = self.keep_in_bound(0, 360,self.mag_y)
 
     def incr_mag_z(self):
-        self.mag_z += self.keep_in_bound(0, 360, self.new_value(1))
+        self.mag_z +=  self.new_value(1)
+        self.mag_z = self.keep_in_bound(0, 360,self.mag_z)
 
     def incr_light(self):
-        self.light += self.keep_in_bound(0, 1200, self.new_value(1))
+        self.light +=  self.new_value(1)
+        self.light = self.keep_in_bound(0, 1200,self.light)
 
     # Increment all sensors measure randomly
     def incr_all(self):
